@@ -112,6 +112,52 @@ body::before {
 @media (max-width: 640px) {
   .brand img { height: 40px; }
 }
+
+/* Logo lightbox */
+.logo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(11, 10, 9, 0.82);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.logo-modal.open { opacity: 1; visibility: visible; }
+.logo-modal img {
+  max-width: min(480px, 86vw);
+  max-height: 82vh;
+  width: auto;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  transform: scale(0.94);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.logo-modal.open img { transform: scale(1); }
+.logo-modal-close {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(242, 237, 227, 0.12);
+  color: var(--cream);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.logo-modal-close:hover { background: rgba(242, 237, 227, 0.25); }
 .nav-links {
   display: flex;
   gap: 40px;
@@ -1327,7 +1373,7 @@ body::before {
 <!-- 2. NAVIGATION -->
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="#" class="logo brand" aria-label="Spearflow AI"><img src="/assets/spearflow-logo.png" alt="Spearflow AI"></a>
+    <a href="#" class="logo brand" aria-label="View Spearflow AI logo" onclick="openLogo(event)"><img src="/assets/spearflow-logo.png" alt="Spearflow AI"></a>
     <ul class="nav-links">
       <li><a href="#features">What You Get</a></li>
       <li><a href="#how">How it Works</a></li>
@@ -2096,7 +2142,32 @@ document.querySelectorAll('.stat-num').forEach(el => {
   }
   statObserver.observe(el);
 });
+
+/* Logo lightbox */
+const logoModal = document.getElementById('logoModal');
+function openLogo(e) {
+  if (e) e.preventDefault();
+  logoModal.classList.add('open');
+  logoModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeLogo() {
+  logoModal.classList.remove('open');
+  logoModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+logoModal.addEventListener('click', function (e) {
+  if (e.target === logoModal || e.target.classList.contains('logo-modal-close')) closeLogo();
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && logoModal.classList.contains('open')) closeLogo();
+});
 </script>
+
+<div class="logo-modal" id="logoModal" role="dialog" aria-modal="true" aria-label="Spearflow AI logo" aria-hidden="true">
+  <button class="logo-modal-close" aria-label="Close">&times;</button>
+  <img src="/assets/spearflow-logo.png" alt="Spearflow AI full logo">
+</div>
 
 </body>
 </html>

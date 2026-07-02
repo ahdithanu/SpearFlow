@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 116" width="120" height="116">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8CE86"/>
+      <stop offset="45%" stop-color="#CBA24C"/>
+      <stop offset="100%" stop-color="#9C7B33"/>
+    </linearGradient>
+  </defs>
+  <!-- SF monogram -->
+  <text x="36" y="80" text-anchor="middle" font-family="'Geist','Segoe UI',Arial,sans-serif" font-size="66" font-weight="800" fill="#15120F">S</text>
+  <text x="84" y="80" text-anchor="middle" font-family="'Geist','Segoe UI',Arial,sans-serif" font-size="66" font-weight="800" fill="#15120F">F</text>
+  <!-- Gold spear -->
+  <path d="M60 6 L51 35 L60 44 L69 35 Z" fill="url(#gold)"/>
+  <rect x="55" y="44" width="10" height="3.2" fill="url(#gold)"/>
+  <rect x="56.2" y="48.5" width="7.6" height="2.6" fill="url(#gold)"/>
+  <rect x="57.4" y="51.5" width="5.2" height="47" fill="url(#gold)"/>
+  <rect x="58.3" y="52" width="1.5" height="46" fill="#F1DFA6" opacity="0.65"/>
+  <path d="M57.4 98.5 L62.6 98.5 L60 108 Z" fill="url(#gold)"/>
+</svg>

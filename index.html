@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <title>Spear Flow — AI-Native Consulting for Growing Businesses</title>
 <meta name="description" content="An AI-native consulting approach that audits your business's technology usage and implements systems to help you scale operations, generate leads, and retain customers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,6 +95,37 @@ body::before {
   content: '.';
   color: var(--accent);
   margin-left: -2px;
+}
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+}
+.logo-mark::after { content: none; }
+.logo-icon {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+.logo-word {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1;
+}
+.logo-word em {
+  font-style: normal;
+  color: #C79A3E;
+  margin-left: 2px;
+}
+@media (max-width: 640px) {
+  .logo-word { font-size: 15px; letter-spacing: 0.16em; }
+  .logo-icon { height: 36px; }
 }
 .nav-links {
   display: flex;
@@ -1241,17 +1273,31 @@ body::before {
 
 <!-- 1. ANNOUNCEMENT BAR -->
 <div class="announce">
-  <span>●</span> Now booking Q1 2026 strategy engagements — limited capacity
+  <span>●</span> Now booking Q3 2026 strategy engagements — limited capacity
 </div>
 
 <!-- 2. NAVIGATION -->
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="#" class="logo">Spear Flow</a>
+    <a href="#" class="logo logo-mark" aria-label="Spearflow AI">
+      <svg class="logo-icon" viewBox="0 0 120 116" aria-hidden="true">
+        <defs><linearGradient id="navGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8CE86"/><stop offset="45%" stop-color="#CBA24C"/><stop offset="100%" stop-color="#9C7B33"/></linearGradient></defs>
+        <text x="36" y="80" text-anchor="middle" font-family="'Geist',Arial,sans-serif" font-size="66" font-weight="800" fill="#15120F">S</text>
+        <text x="84" y="80" text-anchor="middle" font-family="'Geist',Arial,sans-serif" font-size="66" font-weight="800" fill="#15120F">F</text>
+        <path d="M60 6 L51 35 L60 44 L69 35 Z" fill="url(#navGold)"/>
+        <rect x="55" y="44" width="10" height="3.2" fill="url(#navGold)"/>
+        <rect x="56.2" y="48.5" width="7.6" height="2.6" fill="url(#navGold)"/>
+        <rect x="57.4" y="51.5" width="5.2" height="47" fill="url(#navGold)"/>
+        <rect x="58.3" y="52" width="1.5" height="46" fill="#F1DFA6" opacity="0.65"/>
+        <path d="M57.4 98.5 L62.6 98.5 L60 108 Z" fill="url(#navGold)"/>
+      </svg>
+      <span class="logo-word">Spearflow <em>AI</em></span>
+    </a>
     <ul class="nav-links">
       <li><a href="#features">What You Get</a></li>
       <li><a href="#how">How it Works</a></li>
       <li><a href="#cases">Case Studies</a></li>
+      <li><a href="/industries">Industries</a></li>
       <li><a href="#pricing">Engagement</a></li>
       <li><a href="#about">About</a></li>
     </ul>
@@ -1270,7 +1316,7 @@ body::before {
       <a href="#features" class="btn btn-outline btn-large">See What You Get</a>
     </div>
     <div class="trust-bar">
-      <div class="trust-label">Built by operators from</div>
+      <div class="trust-label">Built by alumni from</div>
       <div class="trust-logos">
 
         <!-- Raytheon -->
@@ -1769,7 +1815,7 @@ body::before {
         <div class="founder-photo">V</div>
         <div class="founder-name">Vik</div>
         <div class="founder-role">Engineering & AI Systems</div>
-        <p class="founder-bio">Vik brings a rare blend of enterprise engineering rigor and startup hustle. He built mission-critical systems at Raytheon for NASA's Artemis program and architected cloud infrastructure handling 500K+ daily requests at Vanguard. University of Maryland Computer Science and Finance graduate, AWS-certified, and founder of BigShot Betting, a live sports arbitrage platform with paying subscribers. He's shipped LLM-powered data interfaces, multi-agent AI pipelines, and production systems from the ground up.</p>
+        <p class="founder-bio">Vik brings the engineering backbone to the team, the rare builder who pairs enterprise-grade rigor with the speed and ownership of a founder. A University of Maryland Computer Science and Finance graduate and AWS-certified engineer, he's shipped mission-critical systems at Raytheon for NASA's Artemis program and architected cloud infrastructure built to handle traffic at serious scale at Vanguard, the kind of work where reliability isn't a feature but a requirement. That same instinct shows up in what he builds on his own: he's the founder of BigShot Bets, a live sports arbitrage platform with a paying subscriber base, and has shipped LLM-powered data interfaces, multi-agent AI pipelines, and production systems from the ground up. He lives in the gap between what's technically possible and what actually ships, which is exactly where Spear Flow's AI-driven revenue systems get built. When Spear Flow designs your automation, Vik isn't prototyping a demo that breaks under load. He's engineering the production system that runs your revenue motion reliably, at scale, the day it goes live.</p>
         <div class="founder-tags">
           <span class="tag">Raytheon</span>
           <span class="tag">Vanguard</span>
@@ -1841,6 +1887,7 @@ body::before {
           <li><a href="#features">What You Get</a></li>
           <li><a href="#how">How It Works</a></li>
           <li><a href="#cases">Case Studies</a></li>
+          <li><a href="/industries">Industries</a></li>
           <li><a href="#pricing">Engagement</a></li>
         </ul>
       </div>

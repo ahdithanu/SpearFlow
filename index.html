@@ -96,36 +96,21 @@ body::before {
   color: var(--accent);
   margin-left: -2px;
 }
-.logo-mark {
+.brand {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
   text-decoration: none;
+  line-height: 0;
 }
-.logo-mark::after { content: none; }
-.logo-icon {
-  height: 42px;
+.brand::after { content: none; }
+.brand img {
+  height: 48px;
   width: auto;
   display: block;
-}
-.logo-word {
-  font-family: var(--sans);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 17px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink);
-  line-height: 1;
-}
-.logo-word em {
-  font-style: normal;
-  color: #C79A3E;
-  margin-left: 2px;
+  border-radius: 8px;
 }
 @media (max-width: 640px) {
-  .logo-word { font-size: 15px; letter-spacing: 0.16em; }
-  .logo-icon { height: 36px; }
+  .brand img { height: 40px; }
 }
 .nav-links {
   display: flex;
@@ -140,6 +125,69 @@ body::before {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--accent); }
+
+/* Industries dropdown */
+.nav-dd { position: relative; }
+.nav-dd-toggle::after {
+  content: '▾';
+  font-size: 10px;
+  margin-left: 5px;
+  color: var(--muted);
+  transition: transform 0.2s;
+  display: inline-block;
+}
+.nav-dd:hover .nav-dd-toggle::after { transform: rotate(180deg); color: var(--accent); }
+.nav-dd-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 220px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 16px 40px rgba(19, 17, 15, 0.12);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 200;
+}
+.nav-dd::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+.nav-dd:hover .nav-dd-menu,
+.nav-dd:focus-within .nav-dd-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(12px);
+}
+.nav-dd-menu a {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-dd-menu a:hover { background: var(--cream-deep); color: var(--accent); }
+.nav-dd-alt {
+  margin-top: 6px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px !important;
+  color: var(--accent) !important;
+  font-style: italic;
+}
 
 .btn {
   display: inline-flex;
@@ -1279,25 +1327,23 @@ body::before {
 <!-- 2. NAVIGATION -->
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="#" class="logo logo-mark" aria-label="Spearflow AI">
-      <svg class="logo-icon" viewBox="0 0 120 116" aria-hidden="true">
-        <defs><linearGradient id="navGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8CE86"/><stop offset="45%" stop-color="#CBA24C"/><stop offset="100%" stop-color="#9C7B33"/></linearGradient></defs>
-        <text x="36" y="80" text-anchor="middle" font-family="'Geist',Arial,sans-serif" font-size="66" font-weight="800" fill="#15120F">S</text>
-        <text x="84" y="80" text-anchor="middle" font-family="'Geist',Arial,sans-serif" font-size="66" font-weight="800" fill="#15120F">F</text>
-        <path d="M60 6 L51 35 L60 44 L69 35 Z" fill="url(#navGold)"/>
-        <rect x="55" y="44" width="10" height="3.2" fill="url(#navGold)"/>
-        <rect x="56.2" y="48.5" width="7.6" height="2.6" fill="url(#navGold)"/>
-        <rect x="57.4" y="51.5" width="5.2" height="47" fill="url(#navGold)"/>
-        <rect x="58.3" y="52" width="1.5" height="46" fill="#F1DFA6" opacity="0.65"/>
-        <path d="M57.4 98.5 L62.6 98.5 L60 108 Z" fill="url(#navGold)"/>
-      </svg>
-      <span class="logo-word">Spearflow <em>AI</em></span>
-    </a>
+    <a href="#" class="logo brand" aria-label="Spearflow AI"><img src="/assets/spearflow-logo.png" alt="Spearflow AI"></a>
     <ul class="nav-links">
       <li><a href="#features">What You Get</a></li>
       <li><a href="#how">How it Works</a></li>
       <li><a href="#cases">Case Studies</a></li>
-      <li><a href="/industries">Industries</a></li>
+      <li class="nav-dd">
+        <a href="/industries" class="nav-dd-toggle">Industries</a>
+        <div class="nav-dd-menu">
+          <a href="/real-estate">Real Estate</a>
+          <a href="/chiropractic">Chiropractic</a>
+          <a href="/medical">Medical Practices</a>
+          <a href="/agriculture">Agriculture</a>
+          <a href="/legal">Legal</a>
+          <a href="/restaurants">Restaurants</a>
+          <a href="/industries#not-listed" class="nav-dd-alt">Don't see your sector? →</a>
+        </div>
+      </li>
       <li><a href="#pricing">Engagement</a></li>
       <li><a href="#about">About</a></li>
     </ul>

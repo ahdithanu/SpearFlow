@@ -1295,6 +1295,45 @@ body::before {
   color: rgba(242, 237, 227, 0.4);
 }
 
+/* Compliance section */
+.compliance {
+  padding: 72px 0;
+  border-top: 1px solid var(--line);
+  background: var(--cream-deep);
+}
+.compliance-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.compliance-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+.compliance h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.compliance p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 820px;
+  margin-bottom: 14px;
+}
+.compliance a { color: var(--accent); }
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
   .nav-links { display: none; }
@@ -1966,6 +2005,17 @@ body::before {
 </section>
 
 <!-- 16. FOOTER -->
+<section class="compliance" id="compliance">
+  <div class="container">
+    <div class="compliance-label">Compliance</div>
+    <h3>Communications &amp; Messaging Consent</h3>
+    <p>By submitting your contact information through our chat widget, forms, or booking links, you consent to receive calls, emails, and SMS text messages from Spear Flow regarding your inquiry, including appointment confirmations, follow-ups, and service updates. Consent is not a condition of purchase.</p>
+    <p>Message and data rates may apply. Message frequency varies. Reply STOP at any time to opt out of SMS messages, or HELP for assistance. You may also reach us directly at <a href="mailto:hello@spearflow.ai">hello@spearflow.ai</a> to update your communication preferences.</p>
+    <p>We do not sell or share your personal information or mobile opt-in data with third parties for marketing purposes. Your information is used solely to respond to your inquiry and deliver our services.</p>
+  </div>
+  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a31e805db812b55512bfe89" data-source="WEB_USER"></script>
+</section>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -1998,6 +2048,7 @@ body::before {
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#">Privacy</a></li>
           <li><a href="#">Terms</a></li>
+          <li><a href="#compliance">Compliance</a></li>
           <li><a href="#cta">Book a Call</a></li>
         </ul>
       </div>

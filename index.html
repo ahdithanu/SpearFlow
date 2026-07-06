@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -113,6 +114,7 @@ body::before {
 }
 @media (max-width: 640px) {
   .brand img { height: 40px; }
+  .nav-cta { display: none; }
 }
 
 /* Logo lightbox */
@@ -1336,9 +1338,71 @@ body::before {
 }
 .compliance a { color: var(--accent); }
 
+/* Mobile hamburger + menu */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.nav-burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  padding: 8px 24px 20px;
+  border-top: 1px solid var(--line);
+  background: var(--cream);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: 13px 4px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--cream-deep);
+}
+.mobile-menu a:active { color: var(--accent); }
+.mobile-menu-head { color: var(--ink); font-weight: 600; }
+.mobile-menu-sub {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  border-left: 2px solid var(--line);
+  margin: 4px 0 4px 4px;
+}
+.mobile-menu-sub a { font-size: 14px; color: var(--muted); padding: 10px 4px; border-bottom: none; }
+.mobile-menu-cta {
+  margin-top: 14px;
+  background: var(--ink);
+  color: var(--cream) !important;
+  text-align: center;
+  border-radius: 100px;
+  padding: 14px 20px !important;
+  border-bottom: none !important;
+}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
   .nav-links { display: none; }
+  .nav-burger { display: flex; }
   .answer-grid { grid-template-columns: 1fr; gap: 32px; }
   .solution-grid { grid-template-columns: 1fr; gap: 48px; }
   .step { grid-template-columns: 60px 1fr; gap: 24px; }
@@ -1434,7 +1498,28 @@ body::before {
       <li><a href="#pricing">Engagement</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-    <a href="#cta" class="btn">Book a Consultation →</a>
+    <a href="#cta" class="btn nav-cta">Book a Consultation →</a>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features">What You Get</a>
+    <a href="#how">How it Works</a>
+    <a href="#cases">Case Studies</a>
+    <a href="/industries" class="mobile-menu-head">Industries →</a>
+    <div class="mobile-menu-sub">
+      <a href="/real-estate">Real Estate</a>
+      <a href="/chiropractic">Chiropractic</a>
+      <a href="/medical">Medical Practices</a>
+      <a href="/agriculture">Agriculture</a>
+      <a href="/legal">Legal</a>
+      <a href="/restaurants">Restaurants</a>
+      <a href="/industries#not-listed">Don't see your sector?</a>
+    </div>
+    <a href="#pricing">Engagement</a>
+    <a href="#about">About</a>
+    <a href="#cta" class="mobile-menu-cta">Book a Consultation →</a>
   </div>
 </nav>
 
@@ -2194,6 +2279,22 @@ document.querySelectorAll('.stat-num').forEach(el => {
     el.textContent = (match[1] || '') + '0' + (match[3] || '');
   }
   statObserver.observe(el);
+});
+
+/* Mobile menu */
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('navBurger');
+  const open = menu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+}
+document.querySelectorAll('.mobile-menu a').forEach(function (a) {
+  a.addEventListener('click', function () {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('navBurger').classList.remove('open');
+    document.getElementById('navBurger').setAttribute('aria-expanded', 'false');
+  });
 });
 
 /* Logo lightbox */

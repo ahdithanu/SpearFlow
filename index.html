@@ -465,147 +465,6 @@ body::before {
   line-height: 1.6;
 }
 
-.problem-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin-top: 64px;
-}
-.problem-card {
-  background: var(--cream);
-  padding: 40px 32px;
-  transition: background 0.3s;
-}
-.problem-card:hover { background: var(--cream-deep); }
-.problem-num {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 48px;
-  font-weight: 300;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 24px;
-}
-.problem-card h4 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  margin-bottom: 12px;
-  line-height: 1.2;
-}
-.problem-card p {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* Blocker carousel */
-.blockers {
-  margin-top: 64px;
-  border: 1px solid var(--line);
-  background: var(--cream);
-}
-.blocker-track {
-  position: relative;
-  min-height: 300px;
-}
-.blocker-slide {
-  position: absolute;
-  inset: 0;
-  padding: 64px 56px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(12px);
-  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
-}
-.blocker-slide.active { opacity: 1; visibility: visible; transform: translateY(0); }
-.blocker-num {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 56px;
-  font-weight: 300;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 24px;
-}
-.blocker-title {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(30px, 3.6vw, 42px);
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  margin-bottom: 18px;
-}
-.blocker-text {
-  font-size: 17px;
-  color: var(--ink-soft);
-  line-height: 1.7;
-  max-width: 620px;
-}
-.blocker-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 20px 56px;
-  border-top: 1px solid var(--line);
-  background: var(--cream-deep);
-}
-.blocker-tabs { display: flex; gap: 28px; flex-wrap: wrap; }
-.blocker-tab {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--muted);
-  position: relative;
-  padding-bottom: 5px;
-  transition: color 0.2s ease;
-}
-.blocker-tab::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.3s ease;
-}
-.blocker-tab.active { color: var(--accent); }
-.blocker-tab.active::after { width: 100%; }
-.blocker-arrows { display: flex; gap: 10px; flex-shrink: 0; }
-.blocker-arrow {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: var(--cream);
-  color: var(--ink);
-  font-size: 16px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-.blocker-arrow:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
-@media (max-width: 640px) {
-  .blocker-slide { padding: 40px 24px; }
-  .blocker-controls { padding: 16px 24px; gap: 12px; }
-  .blocker-tabs { gap: 16px; }
-  .blocker-tab { font-size: 10px; letter-spacing: 0.1em; }
-  .blocker-track { min-height: 340px; }
-}
-
 /* ============ SOLUTION ============ */
 .solution {
   background: var(--cream-deep);
@@ -714,6 +573,14 @@ body::before {
   max-width: 320px;
   margin: 0 auto;
 }
+/* Dark-section variant (Features) */
+.phases-dark .phase::before { background: rgba(242, 237, 227, 0.2); }
+.phases-dark .phase-node { background: var(--cream); color: var(--ink); }
+.phases-dark .phase:hover .phase-node { background: var(--accent-soft); color: var(--ink); }
+.phases-dark .phase-label { color: var(--accent-soft); }
+.phases-dark .phase-title { color: var(--cream); }
+.phases-dark .phase-desc { color: rgba(242, 237, 227, 0.7); }
+
 @media (max-width: 780px) {
   .phases { grid-template-columns: 1fr; gap: 56px; margin-top: 64px; }
   .phase::before { display: none; }
@@ -729,43 +596,6 @@ body::before {
 .features .section-tag { color: var(--accent-soft); }
 .features .section-tag::before { background: var(--accent-soft); }
 .features .section-intro { color: rgba(242, 237, 227, 0.7); }
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin-top: 64px;
-}
-.feature-card {
-  border: 1px solid rgba(242, 237, 227, 0.15);
-  padding: 40px 32px;
-  border-radius: 4px;
-  transition: all 0.3s;
-}
-.feature-card:hover {
-  border-color: var(--accent);
-  background: rgba(200, 74, 31, 0.05);
-}
-.feature-icon {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 32px;
-  color: var(--accent-soft);
-  margin-bottom: 24px;
-  display: block;
-}
-.feature-card h4 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  margin-bottom: 16px;
-}
-.feature-card p {
-  font-size: 15px;
-  color: rgba(242, 237, 227, 0.7);
-  line-height: 1.6;
-}
-
 /* ============ TESTIMONIALS ============ */
 .testimonials-track {
   display: grid;
@@ -1539,7 +1369,6 @@ body::before {
   .faq-sidebar { position: static; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .founders-grid { grid-template-columns: 1fr; }
-  .problem-grid { grid-template-columns: repeat(2, 1fr); }
   .comparison-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .comparison-row { grid-template-columns: 1.4fr 1fr 1fr 1fr 1.1fr; min-width: 720px; }
   .comparison-row > div { padding: 14px 10px; font-size: 12px; }
@@ -1550,8 +1379,7 @@ body::before {
 @media (max-width: 600px) {
   .comparison-row { min-width: 640px; }
   .footer-grid { grid-template-columns: 1fr; }
-  .problem-grid { grid-template-columns: 1fr; }
-}
+  }
 
 /* Scroll reveal */
 .reveal {
@@ -1565,15 +1393,11 @@ body::before {
 }
 
 /* Stagger reveals inside grids so cards appear sequentially */
-.problem-grid.reveal-children .problem-card,
-.features-grid.reveal-children .feature-card,
 .testimonials-track.reveal-children .testimonial {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.problem-grid.reveal-children.visible .problem-card,
-.features-grid.reveal-children.visible .feature-card,
 .testimonials-track.reveal-children.visible .testimonial {
   opacity: 1;
   transform: translateY(0);
@@ -1712,34 +1536,24 @@ body::before {
     <h2 class="section-heading">Every growing business hits the <em>same wall.</em></h2>
     <p class="section-intro">Whether you run a service business, a SaaS team, an agency, or an ecommerce brand, the bottleneck looks the same: more demand than you can capture, more leads than you can convert, more customers than you can retain. Here's what it actually costs.</p>
 
-    <div class="blockers" id="blockerCarousel">
-      <div class="blocker-track">
-        <div class="blocker-slide active" data-blocker="0">
-          <div class="blocker-num">01</div>
-          <div class="blocker-title">Awareness</div>
-          <p class="blocker-text">People don't know who you are. You're the better option in your market and the customer never finds out, because discovery happens somewhere you aren't showing up.</p>
-        </div>
-        <div class="blocker-slide" data-blocker="1">
-          <div class="blocker-num">02</div>
-          <div class="blocker-title">Retention</div>
-          <p class="blocker-text">Customers come one time and that's the end of it. No follow-up, no re-engagement, no reason to return — so every month starts from zero.</p>
-        </div>
-        <div class="blocker-slide" data-blocker="2">
-          <div class="blocker-num">03</div>
-          <div class="blocker-title">Scale</div>
-          <p class="blocker-text">Owner-led operations have a limit. Growth caps at whatever you can personally handle, and the business can't move past your calendar.</p>
-        </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-node">01</div>
+        <div class="phase-label">Blocker One</div>
+        <div class="phase-title">Awareness</div>
+        <p class="phase-desc">People don't know who you are. You're the better option in your market and the customer never finds out, because discovery happens somewhere you aren't showing up.</p>
       </div>
-      <div class="blocker-controls">
-        <div class="blocker-tabs">
-          <button class="blocker-tab active" data-goto="0">01 — Awareness</button>
-          <button class="blocker-tab" data-goto="1">02 — Retention</button>
-          <button class="blocker-tab" data-goto="2">03 — Scale</button>
-        </div>
-        <div class="blocker-arrows">
-          <button class="blocker-arrow" data-step="-1" aria-label="Previous blocker">&larr;</button>
-          <button class="blocker-arrow" data-step="1" aria-label="Next blocker">&rarr;</button>
-        </div>
+      <div class="phase">
+        <div class="phase-node">02</div>
+        <div class="phase-label">Blocker Two</div>
+        <div class="phase-title">Retention</div>
+        <p class="phase-desc">Customers come one time and that's the end of it. No follow-up, no re-engagement, no reason to return — so every month starts from zero.</p>
+      </div>
+      <div class="phase">
+        <div class="phase-node">03</div>
+        <div class="phase-label">Blocker Three</div>
+        <div class="phase-title">Scale</div>
+        <p class="phase-desc">Owner-led operations have a limit. Growth caps at whatever you can personally handle, and the business can't move past your calendar.</p>
       </div>
     </div>
   </div>
@@ -1768,21 +1582,24 @@ body::before {
     <h2 class="section-heading">A full <em>AI-native enterprise system</em> at small-business scale.</h2>
     <p class="section-intro">Enterprise-grade infrastructure, designed for businesses with 1 to 50 people. Without the enterprise price tag or enterprise complexity.</p>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <span class="feature-icon">i.</span>
-        <h4>Demand Generation</h4>
-        <p>AEO and GEO focused content built around what's actually trending in your domain, so you show up where buyers are searching now — including inside AI answers, not just page one.</p>
+    <div class="phases phases-dark">
+      <div class="phase">
+        <div class="phase-node">01</div>
+        <div class="phase-label">Pillar One</div>
+        <div class="phase-title">Demand Generation</div>
+        <p class="phase-desc">AEO and GEO focused content built around what's actually trending in your domain, so you show up where buyers are searching now — including inside AI answers, not just page one.</p>
       </div>
-      <div class="feature-card">
-        <span class="feature-icon">ii.</span>
-        <h4>Command Center</h4>
-        <p>Systems that connect to each other to drive revenue. Calls, leads, follow-up, and customer history running as one operation instead of six tools that don't talk.</p>
+      <div class="phase">
+        <div class="phase-node">02</div>
+        <div class="phase-label">Pillar Two</div>
+        <div class="phase-title">Command Center</div>
+        <p class="phase-desc">Systems that connect to each other to drive revenue. Calls, leads, follow-up, and customer history running as one operation instead of six tools that don't talk.</p>
       </div>
-      <div class="feature-card">
-        <span class="feature-icon">iii.</span>
-        <h4>White Glove Service</h4>
-        <p>As you scale, we build the right solution to get you to the next level. Not a fixed package you outgrow — a system that keeps getting extended as the business changes.</p>
+      <div class="phase">
+        <div class="phase-node">03</div>
+        <div class="phase-label">Pillar Three</div>
+        <div class="phase-title">White Glove Service</div>
+        <p class="phase-desc">As you scale, we build the right solution to get you to the next level. Not a fixed package you outgrow — a system that keeps getting extended as the business changes.</p>
       </div>
     </div>
   </div>
@@ -2261,7 +2078,7 @@ const gridObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
-document.querySelectorAll('.problem-grid, .features-grid, .testimonials-track').forEach(el => {
+document.querySelectorAll('.testimonials-track').forEach(el => {
   el.classList.add('reveal-children');
   gridObserver.observe(el);
 });
@@ -2353,32 +2170,6 @@ document.querySelectorAll('.stat-num').forEach(el => {
   statObserver.observe(el);
 });
 
-/* Blocker carousel */
-function initCarousel(rootId, slideSel, navSel) {
-  const root = document.getElementById(rootId);
-  if (!root) return;
-  const slides = root.querySelectorAll(slideSel);
-  const navs = root.querySelectorAll(navSel);
-  let current = 0;
-
-  function show(i) {
-    current = (i + slides.length) % slides.length;
-    slides.forEach(function (s, n) { s.classList.toggle('active', n === current); });
-    navs.forEach(function (d, n) { d.classList.toggle('active', n === current); });
-  }
-
-  root.querySelectorAll('[data-step]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      show(current + parseInt(btn.dataset.step, 10));
-    });
-  });
-  navs.forEach(function (nav) {
-    nav.addEventListener('click', function () {
-      show(parseInt(nav.dataset.goto, 10));
-    });
-  });
-}
-initCarousel('blockerCarousel', '.blocker-slide', '.blocker-tab');
 
 /* Mobile menu */
 function toggleMobileMenu() {

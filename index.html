@@ -542,35 +542,84 @@ body::before {
   position: relative;
   z-index: 1;
 }
-.solution-pillars {
-  list-style: none;
+/* Pillar carousel */
+.pillar-carousel {
   position: relative;
   z-index: 1;
   margin-top: 28px;
-}
-.solution-pillars li {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(242, 237, 227, 0.15);
   display: flex;
-  align-items: baseline;
-  gap: 16px;
+  flex-direction: column;
+  flex: 1;
 }
-.solution-pillars li:last-child { border-bottom: none; }
-.solution-pillars li::before {
-  content: counter(pillar, decimal-leading-zero);
-  counter-increment: pillar;
+.pillar-track { position: relative; flex: 1; min-height: 232px; }
+.pillar-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+}
+.pillar-slide.active { opacity: 1; visibility: visible; transform: translateY(0); }
+.pillar-num {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--accent-soft);
   letter-spacing: 0.1em;
+  color: var(--accent-soft);
+  margin-bottom: 14px;
 }
-.solution-pillars {
-  counter-reset: pillar;
+.pillar-title {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.4vw, 40px);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 16px;
 }
+.pillar-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(242, 237, 227, 0.65);
+  max-width: 400px;
+}
+.pillar-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(242, 237, 227, 0.15);
+}
+.pillar-dots { display: flex; gap: 8px; }
+.pillar-dot {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  border: none;
+  padding: 0;
+  background: rgba(242, 237, 227, 0.22);
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.pillar-dot.active { background: var(--accent-soft); }
+.pillar-arrows { display: flex; gap: 8px; }
+.pillar-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 237, 227, 0.22);
+  background: transparent;
+  color: var(--cream);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.pillar-arrow:hover { background: var(--accent); border-color: var(--accent); }
 
 /* ============ HOW IT WORKS ============ */
 .steps {
@@ -1262,6 +1311,18 @@ body::before {
   margin-bottom: 16px;
   display: block;
 }
+.footer-brand .brand {
+  display: inline-block;
+  line-height: 0;
+  margin-bottom: 20px;
+}
+.footer-brand .brand::after { content: none; }
+.footer-brand .brand img {
+  height: 64px;
+  width: auto;
+  display: block;
+  border-radius: 10px;
+}
 .footer-brand p {
   font-size: 14px;
   color: rgba(242, 237, 227, 0.6);
@@ -1470,10 +1531,6 @@ body::before {
 </head>
 <body>
 
-<!-- 1. ANNOUNCEMENT BAR -->
-<div class="announce">
-  <span>●</span> Now booking Q3 2026 strategy engagements — limited capacity
-</div>
 
 <!-- 2. NAVIGATION -->
 <nav class="nav">
@@ -1594,33 +1651,18 @@ body::before {
     <div class="problem-grid">
       <div class="problem-card">
         <div class="problem-num">01</div>
-        <h4>Revenue Left on the Table</h4>
-        <p>Inquiries, demo requests, calls, and abandoned carts that go unanswered for hours or days. Every minute of silence is a competitor's win.</p>
+        <h4>Awareness</h4>
+        <p>People don't know who you are. You're the better option in your market and the customer never finds out, because discovery happens somewhere you aren't showing up.</p>
       </div>
       <div class="problem-card">
         <div class="problem-num">02</div>
-        <h4>No Visibility Across the Funnel</h4>
-        <p>Customer data scattered across a CRM, a calendar, a shopping cart, and three spreadsheets. You can't optimize what you can't see.</p>
+        <h4>Retention</h4>
+        <p>Customers come one time and that's the end of it. No follow-up, no re-engagement, no reason to return — so every month starts from zero.</p>
       </div>
       <div class="problem-card">
         <div class="problem-num">03</div>
-        <h4>Pipeline With No Pulse</h4>
-        <p>Leads, trials, and prospects sit untouched because follow-up is manual. The deals exist on paper. They don't close in practice.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-num">04</div>
-        <h4>Silent Churn</h4>
-        <p>Customers and clients drift away without anyone noticing. By the time you spot the pattern, the LTV is already broken.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-num">05</div>
-        <h4>Tool Sprawl, No System</h4>
-        <p>HubSpot for sales, Mailchimp for email, Calendly for booking, Slack for tickets. Six tools doing eight jobs and nothing talks to anything.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-num">06</div>
-        <h4>The Owner Bottleneck</h4>
-        <p>Growth caps at whatever the founder can personally handle. Hiring is slow and expensive. The business can't scale past your calendar.</p>
+        <h4>Scale</h4>
+        <p>Owner-led operations have a limit. Growth caps at whatever you can personally handle, and the business can't move past your calendar.</p>
       </div>
     </div>
   </div>
@@ -1638,11 +1680,36 @@ body::before {
       </div>
       <div class="solution-visual">
         <div class="solution-visual-label">The Three Pillars</div>
-        <ul class="solution-pillars">
-          <li>Lead Generation</li>
-          <li>Automated Follow-Ups</li>
-          <li>Customer Lifecycle</li>
-        </ul>
+        <div class="pillar-carousel" id="pillarCarousel">
+          <div class="pillar-track">
+            <div class="pillar-slide active" data-pillar="0">
+              <div class="pillar-num">01 / 03</div>
+              <div class="pillar-title">Lead Generation</div>
+              <p class="pillar-text">Every call answered, every form captured, every inquiry qualified the moment it lands. Demand stops leaking out of the top of your funnel because nobody was there to catch it.</p>
+            </div>
+            <div class="pillar-slide" data-pillar="1">
+              <div class="pillar-num">02 / 03</div>
+              <div class="pillar-title">Automated Follow-Ups</div>
+              <p class="pillar-text">Confirmations, reminders, re-engagement, and win-backs that run on their own schedule. The deals that used to go quiet get chased without anyone remembering to chase them.</p>
+            </div>
+            <div class="pillar-slide" data-pillar="2">
+              <div class="pillar-num">03 / 03</div>
+              <div class="pillar-title">Customer Lifecycle</div>
+              <p class="pillar-text">One record of every customer from first touch to repeat visit, with reviews and referrals requested at the right moment. Retention becomes a system instead of a hope.</p>
+            </div>
+          </div>
+          <div class="pillar-controls">
+            <div class="pillar-dots">
+              <button class="pillar-dot active" data-goto="0" aria-label="Lead Generation"></button>
+              <button class="pillar-dot" data-goto="1" aria-label="Automated Follow-Ups"></button>
+              <button class="pillar-dot" data-goto="2" aria-label="Customer Lifecycle"></button>
+            </div>
+            <div class="pillar-arrows">
+              <button class="pillar-arrow" data-step="-1" aria-label="Previous pillar">&larr;</button>
+              <button class="pillar-arrow" data-step="1" aria-label="Next pillar">&rarr;</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1905,15 +1972,15 @@ body::before {
 <!-- 12. PRICING / ENGAGEMENT -->
 <section class="section solution" id="pricing">
   <div class="container">
-    <div class="section-tag">Engagement Tiers</div>
-    <h2 class="section-heading">Three ways to work with us. <em>One outcome.</em></h2>
-    <p class="section-intro">Most clients start with an Audit, then graduate to Implementation, then keep us on Retainer. Build the path that fits where you are right now.</p>
+    <div class="section-tag">Engagement</div>
+    <h2 class="section-heading">We build it. <em>Implementation is free.</em></h2>
+    <p class="section-intro">You don't pay us to build the system. Book a time and we'll walk through your operation, show you exactly what we'd build, and cover what free implementation includes for your business. Straightforward pricing, handled on the call. No pitch deck, no pressure.</p>
 
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-name">AI Readiness Audit</div>
         <p class="price-desc">A full diagnostic of your tech stack, workflows, and revenue leaks. Walk away with a written plan.</p>
-        <div class="price-amount"><em>From</em></div>
+        <div class="price-amount"><em>Free</em></div>
         <div class="price-period">2-week engagement</div>
         <ul class="price-features">
           <li>Tech stack audit</li>
@@ -1922,14 +1989,14 @@ body::before {
           <li>90-day priority roadmap</li>
           <li>Custom ROI projection</li>
         </ul>
-        <a href="/book" class="btn btn-outline">Start with an Audit</a>
+        <a href="/book" class="btn btn-outline">Book a Time &rarr;</a>
       </div>
       <div class="price-card featured">
         <div class="price-badge">Most Popular</div>
         <div class="price-name">Systems Implementation</div>
-        <p class="price-desc">We design, build, and deploy your AI-driven revenue system end-to-end. Live in weeks.</p>
-        <div class="price-amount"><em>Custom</em></div>
-        <div class="price-period">4 to 12 week build</div>
+        <p class="price-desc">We design, build, and deploy your AI-driven revenue system end-to-end. The build is on us. Live in weeks.</p>
+        <div class="price-amount"><em>Free Build</em></div>
+        <div class="price-period">4 to 12 week implementation</div>
         <ul class="price-features">
           <li>Everything in Audit</li>
           <li>AI receptionist deployed</li>
@@ -1938,12 +2005,12 @@ body::before {
           <li>Team training included</li>
           <li>30-day post-launch support</li>
         </ul>
-        <a href="/book" class="btn">Book a Discovery Call</a>
+        <a href="/book" class="btn">Book a Time &rarr;</a>
       </div>
       <div class="price-card">
         <div class="price-name">Ongoing Partnership</div>
         <p class="price-desc">Continuous optimization, new workflow design, and advisory as your business evolves.</p>
-        <div class="price-amount"><em>Retainer</em></div>
+        <div class="price-amount"><em>Let's talk</em></div>
         <div class="price-period">Monthly engagement</div>
         <ul class="price-features">
           <li>Monthly performance review</li>
@@ -1952,7 +2019,7 @@ body::before {
           <li>Priority support</li>
           <li>Cancel anytime</li>
         </ul>
-        <a href="/book" class="btn btn-outline">Talk About Partnership</a>
+        <a href="/book" class="btn btn-outline">Book a Time &rarr;</a>
       </div>
     </div>
   </div>
@@ -2045,7 +2112,6 @@ body::before {
         <div class="founder-photo">V</div>
         <div class="founder-name">Vik</div>
         <div class="founder-role">Engineering & AI Systems</div>
-        <p class="founder-bio">Vik brings the engineering backbone to the team, the rare builder who pairs enterprise-grade rigor with the speed and ownership of a founder. A University of Maryland Computer Science and Finance graduate and AWS-certified engineer, he's shipped mission-critical systems at Raytheon for NASA's Artemis program and architected cloud infrastructure built to handle traffic at serious scale at Vanguard, the kind of work where reliability isn't a feature but a requirement. That same instinct shows up in what he builds on his own: he's the founder of BigShot Bets, a live sports arbitrage platform with a paying subscriber base, and has shipped LLM-powered data interfaces, multi-agent AI pipelines, and production systems from the ground up. He lives in the gap between what's technically possible and what actually ships, which is exactly where Spear Flow's AI-driven revenue systems get built. When Spear Flow designs your automation, Vik isn't prototyping a demo that breaks under load. He's engineering the production system that runs your revenue motion reliably, at scale, the day it goes live.</p>
         <div class="founder-tags">
           <span class="tag">Raytheon</span>
           <span class="tag">Vanguard</span>
@@ -2055,9 +2121,8 @@ body::before {
       </div>
       <div class="founder">
         <div class="founder-photo">A</div>
-        <div class="founder-name">Ahdi</div>
+        <div class="founder-name">Andy</div>
         <div class="founder-role">AI Strategy & GTM</div>
-        <p class="founder-bio">Ahdi brings the AI and GTM edge to the team, the operator who connects what's technically possible with what actually drives revenue. A Northwestern Master's in Data Science graduate with a concentration in Artificial Intelligence, he pairs hands-on technical depth in machine learning, NLP, and AI agent architecture with deep operating experience scaling revenue operations and customer success at Alteryx, Loris.ai, and Zeal. He's spent his career inside the exact bottleneck Spear Flow solves: capturing inbound demand the moment it lands, qualifying it instantly, and converting it into booked revenue across the full customer lifecycle. Beyond the day job, he's built and shipped productized AI automation services for founders and operators, which means when Spear Flow designs your AI-driven revenue system, he's not pitching theory. He's translating AI capability into the revenue motion that actually books appointments and retains clients.</p>
         <div class="founder-tags">
           <span class="tag">Northwestern MS</span>
           <span class="tag">AI Concentration</span>
@@ -2066,22 +2131,9 @@ body::before {
         </div>
       </div>
       <div class="founder">
-        <div class="founder-photo">R</div>
-        <div class="founder-name">Rahul</div>
-        <div class="founder-role">Web & Digital Systems</div>
-        <p class="founder-bio">Rahul brings a unique mix of entrepreneurial execution, technical problem-solving, and client-focused strategy to every project. He's led the development and launch of websites, digital platforms, and business systems for companies across multiple industries, helping clients turn ideas into scalable online experiences. A San Francisco State University graduate, Rahul combines business insight with hands-on technical experience in web development, automation, AI-driven solutions, and digital operations, focused on creating practical technology that delivers measurable impact.</p>
-        <div class="founder-tags">
-          <span class="tag">Web Development</span>
-          <span class="tag">Automation</span>
-          <span class="tag">SF State</span>
-          <span class="tag">Digital Systems</span>
-        </div>
-      </div>
-      <div class="founder">
         <div class="founder-photo">D</div>
         <div class="founder-name">Divyesh</div>
         <div class="founder-role">Product & Growth</div>
-        <p class="founder-bio">Divyesh brings a diverse background across startups and enterprises spanning various industries, including biotech, talent acquisition, real estate, and Fortune 100 New York Life. He also has experience founding his own prior startup built for restaurant exploration. Divyesh is an MBA graduate from Purdue, where he studied Management Information Systems (MIS) to identify technology gaps within businesses. He has applied product marketing and growth strategies to streamline operations and drive engagement, which is why he built Spear Flow AI — to help small businesses thrive.</p>
         <div class="founder-tags">
           <span class="tag">New York Life</span>
           <span class="tag">Purdue MBA</span>
@@ -2119,7 +2171,7 @@ body::before {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo">Spear Flow</a>
+        <a href="#" class="brand" aria-label="Spearflow AI"><img src="/assets/spearflow-logo.png" alt="Spearflow AI"></a>
         <p>An AI-native consulting firm building revenue systems for growing businesses. Engineered for operators, not enterprises.</p>
       </div>
       <div class="footer-col">
@@ -2292,6 +2344,32 @@ document.querySelectorAll('.stat-num').forEach(el => {
   }
   statObserver.observe(el);
 });
+
+/* Pillar carousel */
+(function () {
+  const root = document.getElementById('pillarCarousel');
+  if (!root) return;
+  const slides = root.querySelectorAll('.pillar-slide');
+  const dots = root.querySelectorAll('.pillar-dot');
+  let current = 0;
+
+  function show(i) {
+    current = (i + slides.length) % slides.length;
+    slides.forEach(function (s, n) { s.classList.toggle('active', n === current); });
+    dots.forEach(function (d, n) { d.classList.toggle('active', n === current); });
+  }
+
+  root.querySelectorAll('[data-step]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      show(current + parseInt(btn.dataset.step, 10));
+    });
+  });
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      show(parseInt(dot.dataset.goto, 10));
+    });
+  });
+})();
 
 /* Mobile menu */
 function toggleMobileMenu() {

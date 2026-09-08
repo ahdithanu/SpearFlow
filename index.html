@@ -655,6 +655,82 @@ body::before {
   line-height: 1.65;
 }
 
+/* Three-phase progression */
+.phases {
+  margin-top: 88px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.phase {
+  position: relative;
+  text-align: center;
+  padding-top: 84px;
+}
+.phase::before {
+  content: '';
+  position: absolute;
+  top: 27px;
+  left: -20px;
+  right: -20px;
+  height: 2px;
+  background: var(--line);
+  z-index: 0;
+}
+.phase:first-child::before { left: 50%; }
+.phase:last-child::before { right: 50%; }
+.phase-node {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  z-index: 1;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.phase:hover .phase-node {
+  background: var(--accent);
+  transform: translateX(-50%) translateY(-3px);
+}
+.phase-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.phase-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.phase-desc {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 320px;
+  margin: 0 auto;
+}
+@media (max-width: 780px) {
+  .phases { grid-template-columns: 1fr; gap: 56px; margin-top: 64px; }
+  .phase::before { display: none; }
+  .phase-desc { max-width: 460px; }
+}
+
 /* ============ FEATURES ============ */
 .features {
   background: var(--ink);
@@ -1762,33 +1838,26 @@ body::before {
 <section class="section" id="how">
   <div class="container">
     <div class="section-tag">How It Works</div>
-    <h2 class="section-heading">From scattered operations to <em>a system you own</em> in five phases.</h2>
+    <h2 class="section-heading">From scattered operations to <em>a system you own</em> in three phases.</h2>
 
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-title">Complimentary Consultation</div>
-        <div class="step-desc">We sit down to understand your goals, current systems, and processes. The goal is to build the bridge from where you are to where you want to go. No pitch, no pressure.</div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-node">01</div>
+        <div class="phase-label">Phase One</div>
+        <div class="phase-title">Consult &amp; Implementation</div>
+        <p class="phase-desc">We sit down to understand your goals and current systems, audit where revenue is leaking, design the system around your business, then build and deploy it. Live inside your operation in weeks, not quarters.</p>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-title">Audit</div>
-        <div class="step-desc">A full review of your tech stack, lead flow, customer touchpoints, and revenue leaks. You walk away with a written diagnostic, whether you work with us or not.</div>
+      <div class="phase">
+        <div class="phase-node">02</div>
+        <div class="phase-label">Phase Two</div>
+        <div class="phase-title">Fine Tune</div>
+        <p class="phase-desc">We watch the first weeks of real performance and adjust against it — scripts, routing, follow-up timing, qualifying logic. Tuned on what your customers actually do, not on assumptions from the build.</p>
       </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-title">Strategy</div>
-        <div class="step-desc">We design the AI-driven revenue system tailored to your industry, team size, and customer behavior. Every workflow is mapped before a single line of code is written.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-title">Implementation</div>
-        <div class="step-desc">We build, integrate, and deploy. AI receptionist, automated follow-ups, CRM sync, lead scoring. Live and running inside your business within weeks, not quarters.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">05</div>
-        <div class="step-title">Ownership</div>
-        <div class="step-desc">You own the system. We hand off documentation, training, and ongoing optimization. The system gets smarter as your business grows.</div>
+      <div class="phase">
+        <div class="phase-node">03</div>
+        <div class="phase-label">Phase Three</div>
+        <div class="phase-title">Scale</div>
+        <p class="phase-desc">You own the system, with documentation and training handed over. As the business grows we extend it — new workflows, new locations, new service lines — so the system grows with you.</p>
       </div>
     </div>
   </div>

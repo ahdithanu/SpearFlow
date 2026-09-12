@@ -1,133 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <title>Industries — Spear Flow</title>
-  <meta name="description" content="Spear Flow builds AI systems for real estate, chiropractic, medical practices, and agriculture. Sector-specific approach. Outcomes-first delivery.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root { --cream: #F2EDE3; --cream-deep: #E8E1D2; --ink: #13110F; --ink-soft: #2A2622; --muted: #6B6259; --line: #D9D1BF; --accent: #C84A1F; --accent-soft: #E8814F; --serif: 'Fraunces', Georgia, serif; --sans: 'Geist', -apple-system, sans-serif; --mono: 'JetBrains Mono', monospace; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }     .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }     .nav { position: sticky; top: 0; z-index: 100; background: rgba(242,237,227,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--line); }     .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }     .logo { font-family: var(--serif); font-weight: 500; font-size: 22px; letter-spacing: -0.02em; font-style: italic; text-decoration: none; color: var(--ink); }     .logo::after { content: '.'; color: var(--accent); }     .nav-right { display: flex; align-items: center; gap: 32px; }     .nav-home { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); text-decoration: none; transition: color 0.2s; }     .nav-home:hover { color: var(--accent); }     .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--cream); padding: 12px 22px; border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s; }     .btn:hover { background: var(--accent); transform: translateY(-1px); }      /* HERO */     .hero { padding: 120px 0 80px; }     .hero-eyebrow { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 40px; display: flex; align-items: center; gap: 12px; }     .hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }     .hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(52px, 7vw, 88px); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 32px; max-width: 880px; }     .hero h1 em { font-style: italic; font-weight: 300; color: var(--accent); }     .hero-sub { font-size: 20px; line-height: 1.6; color: var(--ink-soft); max-width: 600px; }      /* SECTOR CARDS */     .sectors { padding: 56px 0 120px; }     .sector-group { margin-bottom: 64px; }     .sector-group:last-child { margin-bottom: 0; }     .sector-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 14px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }     .sector-group-name { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); }     .sector-group-count { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }     .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); }     .sector-card { background: var(--cream); padding: 30px 28px 26px; display: flex; flex-direction: column; text-decoration: none; color: var(--ink); transition: background 0.25s ease; }     .sector-card:hover { background: var(--cream-deep); }     .sector-card:hover .sector-arrow { transform: translateX(6px); color: var(--accent); }     .sector-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; }     .sector-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); }     .sector-num { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 26px; line-height: 1; color: var(--accent); opacity: 0.35; }     .sector-title { font-family: var(--serif); font-weight: 500; font-size: 22px; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px; }     .sector-desc { font-size: 14.5px; color: var(--muted); line-height: 1.6; flex: 1; margin-bottom: 20px; }     .sector-arrow { font-size: 20px; color: var(--muted); transition: all 0.3s; align-self: flex-start; }      /* SHARED THREAD */     .thread { padding: 100px 0; background: var(--ink); color: var(--cream); position: relative; }     .thread::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }     .thread-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-soft); margin-bottom: 48px; display: flex; align-items: center; gap: 12px; }     .thread-label::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); }     .thread-heading { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 4vw, 52px); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 64px; max-width: 760px; color: var(--cream); }     .thread-heading em { font-style: italic; color: var(--accent-soft); }     .thread-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(242,237,227,0.08); border: 1px solid rgba(242,237,227,0.08); }     .thread-item { padding: 40px 32px; }     .thread-tag { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent-soft); margin-bottom: 16px; display: block; }     .thread-item h4 { font-family: var(--serif); font-weight: 500; font-size: 20px; letter-spacing: -0.01em; margin-bottom: 10px; color: var(--cream); }     .thread-item p { font-size: 14px; color: rgba(242,237,227,0.55); line-height: 1.6; }      /* CTA */     .cta { padding: 120px 0; }     .cta-heading { font-family: var(--serif); font-weight: 300; font-size: clamp(36px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; max-width: 720px; }     .cta-heading em { font-style: italic; color: var(--accent); }     .cta-sub { font-size: 18px; color: var(--ink-soft); max-width: 520px; margin-bottom: 48px; line-height: 1.6; }     .btn-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--cream); padding: 20px 36px; border-radius: 100px; text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.3s; }     .btn-cta:hover { background: var(--accent); transform: translateY(-2px); }      /* FOOTER */     footer { background: var(--ink); padding: 48px 0; border-top: 1px solid rgba(242,237,227,0.08); }     .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }     .footer-logo { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 22px; color: var(--cream); text-decoration: none; }     .footer-logo::after { content: '.'; color: var(--accent); }     .footer-nav { display: flex; gap: 32px; flex-wrap: wrap; }     .footer-nav a { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(242,237,227,0.4); text-decoration: none; transition: color 0.2s; }     .footer-nav a:hover { color: var(--accent-soft); }      @media (max-width: 900px) {       .sector-grid { grid-template-columns: repeat(2, 1fr); }       .sector-num { font-size: 36px; }       .thread-grid { grid-template-columns: 1fr; }     }     @media (max-width: 640px) {       .container { padding: 0 24px; }       .nav-home { font-size: 10px; letter-spacing: 0.08em; } .nav-right { gap: 14px; } .btn { padding: 10px 16px; font-size: 13px; }       .hero { padding: 80px 0 60px; }       .thread, .cta { padding: 80px 0; }       .sectors { padding: 40px 0 80px; } .sector-grid { grid-template-columns: 1fr; } .sector-group { margin-bottom: 48px; }     }
-    .brand { line-height: 0; }
-    .brand::after { content: none; }
-    .brand img { height: 44px; width: auto; display: block; border-radius: 8px; }
-    @media (max-width: 640px) { .brand img { height: 38px; } }
-  </style> </head> <body>   <nav class="nav">     <div class="container">       <div class="nav-inner">         <a href="/" class="logo brand" aria-label="Spearflow AI"><img src="/assets/spearflow-logo.png" alt="Spearflow AI"></a>         <div class="nav-right">           <a href="/" class="nav-home">&larr; Back to Spear Flow</a>           <a href="/book" class="btn">Book a Call &rarr;</a>         </div>       </div>     </div>   </nav>    <section class="hero">     <div class="container">       <div class="hero-eyebrow">Industries</div>       <h1>We go <em>deep</em> in<br>twelve sectors.</h1>       <p class="hero-sub">Not because we can't work elsewhere &mdash; because depth is where we create value. Generic AI consulting exists everywhere. Sector-specific operators who understand your business before they recommend a system are harder to find.</p>     </div>   </section>    <section class="sectors">
-    <div class="container">
-    <div class="sector-group">
-    <div class="sector-group-head">
-    <div class="sector-group-name">Property & Construction</div>
-    <div class="sector-group-count">03 sectors</div>
-    </div>
-    <div class="sector-grid">
-    <a href="/real-estate" class="sector-card">
-    <div class="sector-top"><div class="sector-label">Real Estate</div><div class="sector-num">01</div></div>
-    <div class="sector-title">Brokerages and Real Estate Teams</div>
-    <p class="sector-desc">Every lead captured. Every follow-up sent. Agents focused on closing, not coordinating. AI receptionist, CRM automation, and AI search presence built for high-volume operations.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    <a href="/general-contractors" class="sector-card">
-    <div class="sector-top"><div class="sector-label">GCs &amp; Home Builders</div><div class="sector-num">02</div></div>
-    <div class="sector-title">General Contractors and Custom Builders</div>
-    <p class="sector-desc">Inquiries qualified before they hit your calendar, proposals that don't go cold, and long build cycles held together with automated touchpoints.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    <a href="/commercial" class="sector-card">
-    <div class="sector-top"><div class="sector-label">Commercial Subs</div><div class="sector-num">03</div></div>
-    <div class="sector-title">Commercial and Trade Subcontractors</div>
-    <p class="sector-desc">Bid invitations captured the moment they land, follow-up that runs through the award decision, and GC relationships kept warm on the permit clock.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    </div>
-    </div>
-    <div class="sector-group">
-    <div class="sector-group-head">
-    <div class="sector-group-name">Trades & Emergency Response</div>
-    <div class="sector-group-count">03 sectors</div>
-    </div>
-    <div class="sector-grid">
-    <a href="/hvac" class="sector-card">
-    <div class="sector-top"><div class="sector-label">HVAC</div><div class="sector-num">04</div></div>
-    <div class="sector-title">Residential and Commercial Contractors</div>
-    <p class="sector-desc">Every emergency call answered at any hour, every estimate followed up until it closes, and past customers reactivated. Peak-season surges absorbed.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    <a href="/restoration" class="sector-card">
-    <div class="sector-top"><div class="sector-label">Restoration</div><div class="sector-num">05</div></div>
-    <div class="sector-title">Water &amp; Fire Damage Restoration</div>
-    <p class="sector-desc">Every emergency call answered at 2 a.m., the loss triaged and the nearest tech dispatched, and claim-ready documentation built as the job happens.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    <a href="/remodelers" class="sector-card">
-    <div class="sector-top"><div class="sector-label">Remodelers &amp; Trades</div><div class="sector-num">06</div></div>
-    <div class="sector-title">Remodelers and Specialty Trade Contractors</div>
-    <p class="sector-desc">Every call answered live while you're on the job, every estimate followed up until it signs, and tire-kickers filtered before they hit your calendar.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    </div>
-    </div>
-    <div class="sector-group">
-    <div class="sector-group-head">
-    <div class="sector-group-name">Health & Wellness</div>
-    <div class="sector-group-count">03 sectors</div>
-    </div>
-    <div class="sector-grid">
-    <a href="/chiropractic" class="sector-card">
-    <div class="sector-top"><div class="sector-label">Chiropractic</div><div class="sector-num">07</div></div>
-    <div class="sector-title">Practices and Multi-Location Clinics</div>
-    <p class="sector-desc">Chairs full. Patients returning. No-shows recovered automatically. The full appointment lifecycle running on systems instead of one person's memory.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    <a href="/medical" class="sector-card">
-    <div class="sector-top"><div class="sector-label">Medical Practices</div><div class="sector-num">08</div></div>
-    <div class="sector-title">Independent and Group Practices</div>
-    <p class="sector-desc">Clinical teams focused on patients, not administration. Triage-aware AI receptionist, preventive care outreach, and digital infrastructure that competes on convenience.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    <a href="/medspas" class="sector-card">
-    <div class="sector-top"><div class="sector-label">MedSpas</div><div class="sector-num">09</div></div>
-    <div class="sector-title">Injectables, Laser, and Aesthetics</div>
-    <p class="sector-desc">Chair time booked, packages completed, memberships saved before they quietly lapse. Consult capture and billing recovery running on a system.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    </div>
-    </div>
-    <div class="sector-group">
-    <div class="sector-group-head">
-    <div class="sector-group-name">Professional & Specialty</div>
-    <div class="sector-group-count">03 sectors</div>
-    </div>
-    <div class="sector-grid">
-    <a href="/legal" class="sector-card">
-    <div class="sector-top"><div class="sector-label">Legal</div><div class="sector-num">10</div></div>
-    <div class="sector-title">Solo Practitioners and Small Firms</div>
-    <p class="sector-desc">Every intake captured, every consultation scheduled, attorneys billing instead of coordinating. The administrative layer automated so legal work stays front and center.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    <a href="/restaurants" class="sector-card">
-    <div class="sector-top"><div class="sector-label">Restaurants</div><div class="sector-num">11</div></div>
-    <div class="sector-title">Restaurant Groups and Catering</div>
-    <p class="sector-desc">No-shows reduced and recovered. Catering leads captured at speed. Guest relationships built beyond the visit, on systems instead of whoever answers the phone.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    <a href="/agriculture" class="sector-card">
-    <div class="sector-top"><div class="sector-label">Agriculture</div><div class="sector-num">12</div></div>
-    <div class="sector-title">Dealers, Suppliers, and Agri-Service</div>
-    <p class="sector-desc">Complex seasonal operations made visible and responsive. Inbound capture during peak season and relationship CRM that survives staff turnover.</p>
-    <div class="sector-arrow">&rarr;</div>
-    </a>
-    </div>
-    </div>
-    </div>
-    </section>    <section class="thread">     <div class="container">       <div class="thread-label">The Common Thread</div>       <h2 class="thread-heading">Every sector. The same <em>underlying problem.</em></h2>       <div class="thread-grid">         <div class="thread-item">           <span class="thread-tag">Inbound</span>           <h4>Leads lost to missed calls</h4>           <p>Every business we work with is losing revenue to inbound they can't answer fast enough. AI receptionist closes that gap at every hour.</p>         </div>         <div class="thread-item">           <span class="thread-tag">Follow-Up</span>           <h4>Manual processes that don't scale</h4>           <p>Confirmations, reminders, re-engagement, re-booking &mdash; all running manually by people who have higher-value work to do. Automation handles the repetitive layer.</p>         </div>         <div class="thread-item">           <span class="thread-tag">Visibility</span>           <h4>No real-time operational picture</h4>           <p>Decisions made on gut because the data lives in disconnected systems or people's heads. A unified dashboard changes what decisions are even possible.</p>         </div>       </div>     </div>   </section>    <section class="cta" id="not-listed">     <div class="container">       <h2 class="cta-heading">Don't see your sector?<br><em>Talk to us anyway.</em></h2>       <p class="cta-sub">If your business has leads, appointments, follow-ups, and customers to retain, the underlying systems apply. We'll tell you honestly whether we're the right fit.</p>       <a href="/book" class="btn-cta">Book a Call &rarr;</a>     </div>   </section>    <footer>     <div class="container">       <div class="footer-inner">         <a href="/" class="footer-logo">Spear Flow</a>         <nav class="footer-nav">           <a href="/real-estate">Real Estate</a>           <a href="/chiropractic">Chiropractic</a>           <a href="/medical">Medical</a>           <a href="/medspas">MedSpas</a>           <a href="/hvac">HVAC</a>           <a href="/remodelers">Remodelers</a>           <a href="/commercial">Commercial</a>           <a href="/general-contractors">Builders</a>           <a href="/restoration">Restoration</a>           <a href="/agriculture">Agriculture</a>           <a href="/legal">Legal</a>           <a href="/restaurants">Restaurants</a>           <a href="mailto:hello@spearflow.ai">Contact</a>         </nav>       </div>     </div>   </footer> <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a31e805db812b55512bfe89" data-source="WEB_USER"></script>
-</body> </html>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Industries — Spear Flow</title>
+<meta name="description" content="Spear Flow builds AI revenue systems for twelve sectors. Sector-specific operators, outcomes-first delivery." />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--paper:#f3f1eb;--paper2:#ebe8e0;--ink:#11110f;--muted:#66645d;--line:#cbc8bf;--dark:#11110f;--dark2:#191916;--light:#f4f1e9;--max:1320px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 64px));margin:auto}.mono{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.13em;font-size:10px}.rule{border-top:1px solid var(--line)}
+nav{position:fixed;z-index:80;left:0;right:0;top:0;background:rgba(243,241,235,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(17,17,15,.1)}.navin{width:min(var(--max),calc(100% - 64px));margin:auto;height:68px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:600;font-size:15px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}.brandlogo{height:34px;width:auto;display:block;border-radius:6px}.brandmark{width:22px;height:22px;position:relative}.brandmark:before,.brandmark:after{content:'';position:absolute;background:var(--ink)}.brandmark:before{width:2px;height:22px;left:10px}.brandmark:after{width:22px;height:2px;top:10px}.links{display:flex;gap:30px;font-size:12px;color:#56544e}.links a:hover{color:#111}.navcta{font-size:12px;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.hero{min-height:100svh;padding:130px 0 84px;display:grid;grid-template-columns:1.12fr .88fr;gap:54px;align-items:center}.heroCopy{max-width:900px}.eyebrow{margin-bottom:28px;color:#55534d}.hero h1{font-size:clamp(64px,8.2vw,124px);line-height:.88;letter-spacing:-.075em;font-weight:500;margin:0;max-width:980px}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:720px;margin:32px 0 30px}.heroActions{display:flex;gap:20px;align-items:center}.primary{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:14px 18px;font-size:12px}.textLink{font-size:12px;border-bottom:1px solid #8f8c83;padding-bottom:3px}.heroAside{display:flex;flex-direction:column;justify-content:end;min-height:650px}.heroAside .note{border-top:1px solid var(--line);padding-top:16px;color:#737068;line-height:1.6;font-size:12px;max-width:340px;align-self:flex-end}.heroAside strong{display:block;color:var(--ink);font-size:12px;font-weight:500;margin-bottom:8px}
+.heroCore{height:520px;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.heroCore canvas,.architectureCore canvas,.finalCore canvas{position:absolute;inset:0;width:100%!important;height:100%!important}.coreMeta{position:absolute;z-index:3;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;color:#6b6962;pointer-events:none}.coreBadge{position:absolute;z-index:3;right:18px;top:18px;border:1px solid rgba(17,17,15,.2);padding:8px 10px;color:#5e5b54;background:rgba(243,241,235,.55);backdrop-filter:blur(10px)}
+.statement{padding:84px 0 110px}.statement p{font-size:clamp(34px,4.2vw,64px);line-height:1.03;letter-spacing:-.052em;max-width:1180px;margin:0;font-weight:500}.statement p span{color:#8a877f}
+.section{padding:116px 0}.sectionGrid{display:grid;grid-template-columns:.42fr 1fr;gap:80px}.kicker{color:#64615b}.section h2{font-size:clamp(48px,5.8vw,86px);line-height:.94;letter-spacing:-.065em;font-weight:500;margin:0 0 32px;max-width:900px}.lead{font-size:16px;line-height:1.75;color:var(--muted);max-width:760px;margin:0}.capabilities{margin-top:64px;border-top:1px solid var(--line)}.capability{display:grid;grid-template-columns:.26fr .74fr;padding:38px 0;border-bottom:1px solid var(--line);gap:40px}.capability .num{color:#77746d}.capability h3{font-size:29px;letter-spacing:-.045em;font-weight:500;margin:0 0 13px}.capability p{margin:0;color:var(--muted);line-height:1.7;max-width:700px}.capability .mini{margin-top:20px;color:#7a776f}
+.systemPanel{margin-top:68px;background:var(--dark);color:var(--light);padding:34px}.systemTop{display:flex;justify-content:space-between;gap:30px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.16)}.systemTop span{color:#8f8d87}.architectureCore{height:420px;position:relative;border-bottom:1px solid rgba(255,255,255,.16);overflow:hidden}.architectureCore:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,15,.95),transparent 18%,transparent 82%,rgba(17,17,15,.95));pointer-events:none}.archLabel{position:absolute;z-index:3;top:18px;left:0;color:#817f78}.archState{position:absolute;z-index:3;right:0;bottom:18px;color:#817f78}.systemFlow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:34px}.flowItem{padding:0 18px 8px;border-left:1px solid rgba(255,255,255,.18);min-height:150px}.flowItem:first-child{padding-left:0;border-left:0}.flowItem small{display:block;color:#76746e;margin-bottom:42px}.flowItem strong{font-size:18px;font-weight:500;letter-spacing:-.03em}.flowItem p{color:#8d8b85;font-size:12px;line-height:1.6;margin:10px 0 0}
+.results{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.metric{padding:34px 28px 40px 0}.metric+.metric{border-left:1px solid var(--line);padding-left:28px}.metric strong{font-size:clamp(58px,6vw,92px);letter-spacing:-.07em;font-weight:500;display:block}.metric p{color:var(--muted);font-size:13px;line-height:1.6;max-width:270px}
+.control{background:var(--dark);color:var(--light);padding:116px 0}.control .sectionGrid{align-items:start}.control .kicker{color:#85827b}.control h2{color:var(--light)}.control .lead{color:#9c9992}.controlList{margin-top:54px;border-top:1px solid rgba(255,255,255,.17)}.controlRow{display:grid;grid-template-columns:.22fr .78fr;gap:30px;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.17)}.controlRow span{color:#77746e}.controlRow h3{font-size:24px;letter-spacing:-.04em;font-weight:500;margin:0 0 10px}.controlRow p{margin:0;color:#99968f;line-height:1.65;max-width:700px;font-size:14px}
+.faq{padding:116px 0}.faqList{margin-top:56px;border-top:1px solid var(--line)}details{border-bottom:1px solid var(--line)}summary{list-style:none;cursor:pointer;padding:28px 0;display:grid;grid-template-columns:1fr auto;gap:24px;font-size:22px;letter-spacing:-.03em}summary::-webkit-details-marker{display:none}summary:after{content:'+';font-family:'DM Mono';font-size:16px;color:#77746d}details[open] summary:after{content:'×'}details p{max-width:800px;color:var(--muted);line-height:1.7;margin:0 0 32px;font-size:14px}
+.final{padding:122px 0 132px;border-top:1px solid var(--line)}.finalGrid{display:grid;grid-template-columns:1.06fr .94fr;gap:58px;align-items:center}.final h2{font-size:clamp(60px,7.6vw,112px);line-height:.9;letter-spacing:-.074em;font-weight:500;margin:18px 0 0;max-width:900px}.finalCopy p{max-width:600px;color:var(--muted);line-height:1.7;margin:32px 0}.finalCore{height:430px;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.finalCoreMeta{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;color:#77746d;z-index:3}
+.footer{padding:28px 0 38px;border-top:1px solid var(--line);font-size:11px;color:#77746c}.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.footlinks{display:flex;gap:22px;flex-wrap:wrap}.footlinks a:hover{color:var(--ink)}.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.on{opacity:1;transform:none}
+@media(max-width:920px){.hero{grid-template-columns:1fr;gap:28px}.heroAside{min-height:0}.heroAside .note{align-self:flex-start}.heroCore{height:480px}.sectionGrid,.finalGrid{grid-template-columns:1fr;gap:30px}.systemFlow{grid-template-columns:1fr 1fr}.flowItem{border-left:0;border-top:1px solid rgba(255,255,255,.16);padding:24px 20px}.flowItem small{margin-bottom:28px}.results{grid-template-columns:1fr}.metric+.metric{border-left:0;border-top:1px solid var(--line);padding-left:0}.capability{grid-template-columns:1fr;gap:12px}.links{display:none}.architectureCore{height:360px}.finalCore{height:360px}}
+@media(max-width:620px){.wrap,.navin{width:calc(100% - 28px)}.navin{height:62px}.hero{padding-top:112px}.hero h1{font-size:58px}.hero p{font-size:15px}.heroActions{align-items:flex-start;flex-direction:column}.heroCore{height:400px}.statement{padding:70px 0 84px}.statement p{font-size:38px}.section,.faq{padding:86px 0}.section h2{font-size:48px}.systemPanel{margin-left:-14px;margin-right:-14px;padding:24px 16px}.architectureCore{height:320px}.systemFlow{grid-template-columns:1fr}.flowItem{padding-left:0}.control{padding:86px 0}.controlRow{grid-template-columns:1fr;gap:8px}.final{padding:90px 0 100px}.final h2{font-size:58px}.finalCore{height:320px}.foot{flex-direction:column}.navcta{display:none}.coreMeta,.finalCoreMeta{font-size:8px}.coreBadge{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+
+<style>
+.pageHero{padding:150px 0 26px}
+.pageHero h1{font-size:clamp(52px,6.6vw,104px);line-height:.92;letter-spacing:-.07em;font-weight:500;margin:0;max-width:1040px}
+.pageHero h1 span{color:#8a877f}
+.pageHero .lead{margin-top:30px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:60px;border-top:1px solid var(--line)}
+.cell{padding:34px 30px 38px 0;border-bottom:1px solid var(--line)}
+.cell:nth-child(even){padding-left:30px;border-left:1px solid var(--line)}
+.cell h3{font-size:24px;letter-spacing:-.04em;font-weight:500;margin:0 0 10px}
+.cell p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}
+.cell .mono{color:#77746d;display:block;margin-bottom:16px}
+.sectorGroup{margin-top:64px}
+.sectorGroup .ghead{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;color:#64615b}
+.sectorRow{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.sectorCard{padding:30px 26px 34px 0;border-bottom:1px solid var(--line);display:block}
+.sectorCard+.sectorCard{padding-left:26px;border-left:1px solid var(--line)}
+.sectorCard .mono{color:#77746d;display:block;margin-bottom:14px}
+.sectorCard h3{font-size:21px;letter-spacing:-.035em;font-weight:500;margin:0 0 10px}
+.sectorCard p{margin:0 0 16px;color:var(--muted);line-height:1.65;font-size:13px}
+.sectorCard .go{font-size:12px;color:#77746d}
+.sectorCard:hover h3{color:#000}.sectorCard:hover .go{color:var(--ink)}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line)}
+.person{padding:32px 26px 38px 0;border-bottom:1px solid var(--line)}
+.person+.person{padding-left:26px;border-left:1px solid var(--line)}
+.person h3{font-size:26px;letter-spacing:-.04em;font-weight:500;margin:0 0 6px}
+.person .role{color:#77746d;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);padding:5px 10px;font-size:11px;color:#66645d}
+details.q{border-bottom:1px solid var(--line)}
+details.q summary{list-style:none;cursor:pointer;padding:24px 0;display:grid;grid-template-columns:1fr auto;gap:20px;font-size:19px;letter-spacing:-.03em}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary:after{content:'+';font-family:'DM Mono';font-size:15px;color:#77746d}
+details.q[open] summary:after{content:'×'}
+details.q p{max-width:820px;color:var(--muted);line-height:1.7;margin:0 0 26px;font-size:14px}
+.quoteGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:56px;border-top:1px solid rgba(255,255,255,.17)}
+.quote{padding:30px 28px 34px 0;border-bottom:1px solid rgba(255,255,255,.17)}
+.quote:nth-child(even){padding-left:28px;border-left:1px solid rgba(255,255,255,.17)}
+.quote p{margin:0 0 14px;line-height:1.7;font-size:15px;color:#cfccc5}
+.quote .who{color:#8f8d87;font-size:12px}
+.planGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border-top:1px solid var(--line)}
+.plan{padding:32px 26px 38px 0;border-bottom:1px solid var(--line)}
+.plan+.plan{padding-left:26px;border-left:1px solid var(--line)}
+.plan h3{font-size:23px;letter-spacing:-.04em;font-weight:500;margin:0 0 10px}
+.plan .amt{font-size:30px;letter-spacing:-.05em;margin:18px 0 4px;font-weight:500}
+.plan .per{color:#77746d;margin-bottom:20px}
+.plan p{color:var(--muted);line-height:1.65;font-size:13px;margin:0}
+.plan ul{list-style:none;padding:0;margin:20px 0 24px}
+.plan li{padding:7px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.prose{max-width:820px;margin-top:44px}
+.prose p{color:var(--muted);line-height:1.8;font-size:15px;margin:0 0 22px}
+.prose a{border-bottom:1px solid #8f8c83}
+@media(max-width:920px){.pageHero{padding:120px 0 18px}.grid2,.people,.planGrid,.quoteGrid,.sectorRow{grid-template-columns:1fr}
+.cell,.person,.plan,.quote,.sectorCard{padding:26px 0 30px!important;border-left:0!important}}
+</style>
+
+</head>
+<body>
+<nav><div class="navin"><a class="brand" href="/"><img class="brandlogo" src="/assets/spearflow-logo.png" alt="Spear Flow" /></a><div class="links"><a href="#product">Product</a><a href="/industries">Industries</a><a href="/case-studies">Case Studies</a><a href="/engagement">Work With Us</a><a href="/about">About</a></div><a class="navcta" href="/book">Get started</a></div></nav>
+<main>
+<section class="pageHero"><div class="wrap">
+<div class="eyebrow mono reveal on">Industries</div>
+<h1 class="reveal on">We go <span>deep</span> in<br>twelve sectors.</h1>
+<p class="lead reveal on">Not because we can't work elsewhere &mdash; because depth is where we create value. Generic AI consulting exists everywhere. Sector-specific operators who understand your business before they recommend a system are harder to find.</p></div></section>
+<section class="section" style="padding-top:40px"><div class="wrap"><div class="sectorGroup"><div class="ghead mono reveal"><span>Property & Construction</span><span>03 sectors</span></div><div class="sectorRow"><a class="sectorCard reveal" href="/real-estate"><span class="mono">Real Estate</span><h3>Brokerages and Real Estate Teams</h3><p>Every lead captured. Every follow-up sent. Agents focused on closing, not coordinating. AI receptionist, CRM automation, and AI search presence built for high-volume operations.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/general-contractors"><span class="mono">GCs &amp; Home Builders</span><h3>General Contractors and Custom Builders</h3><p>Inquiries qualified before they hit your calendar, proposals that don't go cold, and long build cycles held together with automated touchpoints.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/commercial"><span class="mono">Commercial Subs</span><h3>Commercial and Trade Subcontractors</h3><p>Bid invitations captured the moment they land, follow-up that runs through the award decision, and GC relationships kept warm on the permit clock.</p><span class="go mono">View sector &rarr;</span></a></div></div><div class="sectorGroup"><div class="ghead mono reveal"><span>Trades & Emergency Response</span><span>03 sectors</span></div><div class="sectorRow"><a class="sectorCard reveal" href="/hvac"><span class="mono">HVAC</span><h3>Residential and Commercial Contractors</h3><p>Every emergency call answered at any hour, every estimate followed up until it closes, and past customers reactivated. Peak-season surges absorbed.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/restoration"><span class="mono">Restoration</span><h3>Water &amp; Fire Damage Restoration</h3><p>Every emergency call answered at 2 a.m., the loss triaged and the nearest tech dispatched, and claim-ready documentation built as the job happens.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/remodelers"><span class="mono">Remodelers &amp; Trades</span><h3>Remodelers and Specialty Trade Contractors</h3><p>Every call answered live while you're on the job, every estimate followed up until it signs, and tire-kickers filtered before they hit your calendar.</p><span class="go mono">View sector &rarr;</span></a></div></div><div class="sectorGroup"><div class="ghead mono reveal"><span>Health & Wellness</span><span>03 sectors</span></div><div class="sectorRow"><a class="sectorCard reveal" href="/chiropractic"><span class="mono">Chiropractic</span><h3>Practices and Multi-Location Clinics</h3><p>Chairs full. Patients returning. No-shows recovered automatically. The full appointment lifecycle running on systems instead of one person's memory.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/medical"><span class="mono">Medical Practices</span><h3>Independent and Group Practices</h3><p>Clinical teams focused on patients, not administration. Triage-aware AI receptionist, preventive care outreach, and digital infrastructure that competes on convenience.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/medspas"><span class="mono">MedSpas</span><h3>Injectables, Laser, and Aesthetics</h3><p>Chair time booked, packages completed, memberships saved before they quietly lapse. Consult capture and billing recovery running on a system.</p><span class="go mono">View sector &rarr;</span></a></div></div><div class="sectorGroup"><div class="ghead mono reveal"><span>Professional & Specialty</span><span>03 sectors</span></div><div class="sectorRow"><a class="sectorCard reveal" href="/legal"><span class="mono">Legal</span><h3>Solo Practitioners and Small Firms</h3><p>Every intake captured, every consultation scheduled, attorneys billing instead of coordinating. The administrative layer automated so legal work stays front and center.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/restaurants"><span class="mono">Restaurants</span><h3>Restaurant Groups and Catering</h3><p>No-shows reduced and recovered. Catering leads captured at speed. Guest relationships built beyond the visit, on systems instead of whoever answers the phone.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/agriculture"><span class="mono">Agriculture</span><h3>Dealers, Suppliers, and Agri-Service</h3><p>Complex seasonal operations made visible and responsive. Inbound capture during peak season and relationship CRM that survives staff turnover.</p><span class="go mono">View sector &rarr;</span></a></div></div></div></section>
+<section class="section rule"><div class="wrap sectionGrid"><div class="kicker mono reveal">The common thread</div>
+<div><div class="reveal"><h2>Every sector. The same underlying problem.</h2></div><div class="grid2"><div class="cell reveal"><span class="mono">Inbound</span><h3>Leads lost to missed calls</h3><p>Every business we work with is losing revenue to inbound they can't answer fast enough. AI receptionist closes that gap at every hour.</p></div><div class="cell reveal"><span class="mono">Follow-Up</span><h3>Manual processes that don't scale</h3><p>Confirmations, reminders, re-engagement, re-booking &mdash; all running manually by people who have higher-value work to do. Automation handles the repetitive layer.</p></div><div class="cell reveal"><span class="mono">Visibility</span><h3>No real-time operational picture</h3><p>Decisions made on gut because the data lives in disconnected systems or people's heads. A unified dashboard changes what decisions are even possible.</p></div></div></div></div></section>
+<section class="final"><div class="wrap"><div class="finalCopy reveal">
+<div class="kicker mono">Next step</div><h2>Don't see your sector? Talk to us anyway.</h2><p>If your business has leads, appointments, follow-ups, and customers to retain, the underlying systems apply. We'll tell you honestly whether we're the right fit.</p>
+<a class="primary" href="/book">Book a call <span>&rarr;</span></a></div></div></section>
+</main>
+<footer class="footer"><div class="wrap foot"><span>© 2026 Spear Flow</span><span class="footlinks"><a href="/industries">Industries</a><a href="/case-studies">Case Studies</a><a href="/engagement">Work With Us</a><a href="/about">About</a><a href="/compliance">Compliance</a><a href="/book">Book a Call</a></span></div></footer>
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal:not(.on)').forEach(el=>io.observe(el));
+</script>
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a31e805db812b55512bfe89" data-source="WEB_USER"></script>
+</body>
+</html>

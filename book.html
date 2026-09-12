@@ -1,168 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <title>Book a Consultation — Spear Flow</title>
-  <meta name="description" content="Book a complimentary 30-minute consultation with Spear Flow. We'll walk through your operations, identify the biggest revenue leaks, and show you what a system looks like.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root { --cream: #F2EDE3; --cream-deep: #E8E1D2; --ink: #13110F; --ink-soft: #2A2622; --muted: #6B6259; --line: #D9D1BF; --accent: #C84A1F; --accent-soft: #E8814F; --serif: 'Fraunces', Georgia, serif; --sans: 'Geist', -apple-system, sans-serif; --mono: 'JetBrains Mono', monospace; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-    .nav { position: sticky; top: 0; z-index: 100; background: rgba(242, 237, 227, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--line); }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
-    .brand { display: inline-flex; align-items: center; text-decoration: none; line-height: 0; }
-    .brand img { height: 48px; width: auto; display: block; border-radius: 8px; }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-dd { position: relative; }
-    .nav-dd-toggle::after { content: '▾'; font-size: 10px; margin-left: 5px; color: var(--muted); transition: transform 0.2s; display: inline-block; }
-    .nav-dd:hover .nav-dd-toggle::after { transform: rotate(180deg); color: var(--accent); }
-    .nav-dd-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 220px; background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 8px; box-shadow: 0 16px 40px rgba(19, 17, 15, 0.12); display: flex; flex-direction: column; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 200; }
-    .nav-dd::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
-    .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(12px); }
-    .nav-dd-menu a { padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--ink-soft); white-space: nowrap; transition: background 0.15s, color 0.15s; }
-    .nav-dd-menu a:hover { background: var(--cream-deep); color: var(--accent); }
-    .nav-dd-alt { margin-top: 6px; border-top: 1px solid var(--line); padding-top: 12px !important; color: var(--accent) !important; font-style: italic; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--cream); padding: 12px 22px; border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: none; cursor: pointer; }
-    .btn:hover { background: var(--accent); transform: translateY(-1px); }
-    .btn-large { padding: 18px 32px; font-size: 15px; }
-    .nav-burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; padding: 10px; background: none; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; }
-    .nav-burger span { display: block; height: 2px; width: 100%; background: var(--ink); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
-    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-burger.open span:nth-child(2) { opacity: 0; }
-    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; flex-direction: column; padding: 8px 24px 20px; border-top: 1px solid var(--line); background: var(--cream); }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { padding: 13px 4px; text-decoration: none; color: var(--ink-soft); font-size: 15px; font-weight: 500; border-bottom: 1px solid var(--cream-deep); }
-    .mobile-menu a:active { color: var(--accent); }
-    .mobile-menu-cta { margin-top: 14px; background: var(--ink); color: var(--cream) !important; text-align: center; border-radius: 100px; padding: 14px 20px !important; border-bottom: none !important; }
-    .final-cta { background: var(--ink); color: var(--cream); padding: 120px 0 100px; text-align: center; position: relative; overflow: hidden; }
-    .final-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 800px; background: radial-gradient(circle, var(--accent) 0%, transparent 60%); opacity: 0.15; filter: blur(60px); }
-    .final-cta-inner { position: relative; z-index: 1; }
-    .final-cta h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(48px, 7vw, 88px); line-height: 1.05; letter-spacing: -0.035em; margin-bottom: 32px; max-width: 900px; margin-left: auto; margin-right: auto; }
-    .final-cta h2 em { font-style: italic; color: var(--accent-soft); }
-    .final-cta p { font-size: 18px; color: rgba(242, 237, 227, 0.7); max-width: 540px; margin: 0 auto 48px; line-height: 1.6; }
-    .final-cta .btn { background: var(--accent); }
-    .final-cta .btn:hover { background: var(--cream); color: var(--ink); }
-    .cta-meta { margin-top: 32px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(242, 237, 227, 0.5); }
-    .scheduler { padding: 72px 0 100px; }
-    .scheduler-card { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: #FFFFFF; box-shadow: 0 24px 60px rgba(19, 17, 15, 0.08); }
-    footer { background: var(--ink); padding: 48px 0; border-top: 1px solid rgba(242,237,227,0.08); }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-    .footer-logo { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 22px; color: var(--cream); text-decoration: none; }
-    .footer-logo::after { content: '.'; color: var(--accent); }
-    .footer-nav { display: flex; gap: 32px; flex-wrap: wrap; }
-    .footer-nav a { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(242,237,227,0.4); text-decoration: none; transition: color 0.2s; }
-    .footer-nav a:hover { color: var(--accent-soft); }
-    @media (max-width: 900px) { .nav-links { display: none; } .nav-burger { display: flex; } }
-    @media (max-width: 640px) { .container { padding: 0 24px; } .brand img { height: 40px; } .nav-cta { display: none; } .final-cta { padding: 88px 0 72px; } .scheduler { padding: 48px 0 72px; } }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Book a Consultation — Spear Flow</title>
+<meta name="description" content="Book a complimentary 30-minute consultation with Spear Flow. We map your operation, find the revenue leaks, and show you what a system looks like." />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--paper:#f3f1eb;--paper2:#ebe8e0;--ink:#11110f;--muted:#66645d;--line:#cbc8bf;--dark:#11110f;--dark2:#191916;--light:#f4f1e9;--max:1320px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 64px));margin:auto}.mono{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.13em;font-size:10px}.rule{border-top:1px solid var(--line)}
+nav{position:fixed;z-index:80;left:0;right:0;top:0;background:rgba(243,241,235,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(17,17,15,.1)}.navin{width:min(var(--max),calc(100% - 64px));margin:auto;height:68px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:600;font-size:15px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}.brandlogo{height:34px;width:auto;display:block;border-radius:6px}.brandmark{width:22px;height:22px;position:relative}.brandmark:before,.brandmark:after{content:'';position:absolute;background:var(--ink)}.brandmark:before{width:2px;height:22px;left:10px}.brandmark:after{width:22px;height:2px;top:10px}.links{display:flex;gap:30px;font-size:12px;color:#56544e}.links a:hover{color:#111}.navcta{font-size:12px;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.hero{min-height:100svh;padding:130px 0 84px;display:grid;grid-template-columns:1.12fr .88fr;gap:54px;align-items:center}.heroCopy{max-width:900px}.eyebrow{margin-bottom:28px;color:#55534d}.hero h1{font-size:clamp(64px,8.2vw,124px);line-height:.88;letter-spacing:-.075em;font-weight:500;margin:0;max-width:980px}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:720px;margin:32px 0 30px}.heroActions{display:flex;gap:20px;align-items:center}.primary{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:14px 18px;font-size:12px}.textLink{font-size:12px;border-bottom:1px solid #8f8c83;padding-bottom:3px}.heroAside{display:flex;flex-direction:column;justify-content:end;min-height:650px}.heroAside .note{border-top:1px solid var(--line);padding-top:16px;color:#737068;line-height:1.6;font-size:12px;max-width:340px;align-self:flex-end}.heroAside strong{display:block;color:var(--ink);font-size:12px;font-weight:500;margin-bottom:8px}
+.heroCore{height:520px;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.heroCore canvas,.architectureCore canvas,.finalCore canvas{position:absolute;inset:0;width:100%!important;height:100%!important}.coreMeta{position:absolute;z-index:3;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;color:#6b6962;pointer-events:none}.coreBadge{position:absolute;z-index:3;right:18px;top:18px;border:1px solid rgba(17,17,15,.2);padding:8px 10px;color:#5e5b54;background:rgba(243,241,235,.55);backdrop-filter:blur(10px)}
+.statement{padding:84px 0 110px}.statement p{font-size:clamp(34px,4.2vw,64px);line-height:1.03;letter-spacing:-.052em;max-width:1180px;margin:0;font-weight:500}.statement p span{color:#8a877f}
+.section{padding:116px 0}.sectionGrid{display:grid;grid-template-columns:.42fr 1fr;gap:80px}.kicker{color:#64615b}.section h2{font-size:clamp(48px,5.8vw,86px);line-height:.94;letter-spacing:-.065em;font-weight:500;margin:0 0 32px;max-width:900px}.lead{font-size:16px;line-height:1.75;color:var(--muted);max-width:760px;margin:0}.capabilities{margin-top:64px;border-top:1px solid var(--line)}.capability{display:grid;grid-template-columns:.26fr .74fr;padding:38px 0;border-bottom:1px solid var(--line);gap:40px}.capability .num{color:#77746d}.capability h3{font-size:29px;letter-spacing:-.045em;font-weight:500;margin:0 0 13px}.capability p{margin:0;color:var(--muted);line-height:1.7;max-width:700px}.capability .mini{margin-top:20px;color:#7a776f}
+.systemPanel{margin-top:68px;background:var(--dark);color:var(--light);padding:34px}.systemTop{display:flex;justify-content:space-between;gap:30px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.16)}.systemTop span{color:#8f8d87}.architectureCore{height:420px;position:relative;border-bottom:1px solid rgba(255,255,255,.16);overflow:hidden}.architectureCore:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,15,.95),transparent 18%,transparent 82%,rgba(17,17,15,.95));pointer-events:none}.archLabel{position:absolute;z-index:3;top:18px;left:0;color:#817f78}.archState{position:absolute;z-index:3;right:0;bottom:18px;color:#817f78}.systemFlow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:34px}.flowItem{padding:0 18px 8px;border-left:1px solid rgba(255,255,255,.18);min-height:150px}.flowItem:first-child{padding-left:0;border-left:0}.flowItem small{display:block;color:#76746e;margin-bottom:42px}.flowItem strong{font-size:18px;font-weight:500;letter-spacing:-.03em}.flowItem p{color:#8d8b85;font-size:12px;line-height:1.6;margin:10px 0 0}
+.results{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.metric{padding:34px 28px 40px 0}.metric+.metric{border-left:1px solid var(--line);padding-left:28px}.metric strong{font-size:clamp(58px,6vw,92px);letter-spacing:-.07em;font-weight:500;display:block}.metric p{color:var(--muted);font-size:13px;line-height:1.6;max-width:270px}
+.control{background:var(--dark);color:var(--light);padding:116px 0}.control .sectionGrid{align-items:start}.control .kicker{color:#85827b}.control h2{color:var(--light)}.control .lead{color:#9c9992}.controlList{margin-top:54px;border-top:1px solid rgba(255,255,255,.17)}.controlRow{display:grid;grid-template-columns:.22fr .78fr;gap:30px;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.17)}.controlRow span{color:#77746e}.controlRow h3{font-size:24px;letter-spacing:-.04em;font-weight:500;margin:0 0 10px}.controlRow p{margin:0;color:#99968f;line-height:1.65;max-width:700px;font-size:14px}
+.faq{padding:116px 0}.faqList{margin-top:56px;border-top:1px solid var(--line)}details{border-bottom:1px solid var(--line)}summary{list-style:none;cursor:pointer;padding:28px 0;display:grid;grid-template-columns:1fr auto;gap:24px;font-size:22px;letter-spacing:-.03em}summary::-webkit-details-marker{display:none}summary:after{content:'+';font-family:'DM Mono';font-size:16px;color:#77746d}details[open] summary:after{content:'×'}details p{max-width:800px;color:var(--muted);line-height:1.7;margin:0 0 32px;font-size:14px}
+.final{padding:122px 0 132px;border-top:1px solid var(--line)}.finalGrid{display:grid;grid-template-columns:1.06fr .94fr;gap:58px;align-items:center}.final h2{font-size:clamp(60px,7.6vw,112px);line-height:.9;letter-spacing:-.074em;font-weight:500;margin:18px 0 0;max-width:900px}.finalCopy p{max-width:600px;color:var(--muted);line-height:1.7;margin:32px 0}.finalCore{height:430px;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.finalCoreMeta{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;color:#77746d;z-index:3}
+.footer{padding:28px 0 38px;border-top:1px solid var(--line);font-size:11px;color:#77746c}.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.footlinks{display:flex;gap:22px;flex-wrap:wrap}.footlinks a:hover{color:var(--ink)}.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.on{opacity:1;transform:none}
+@media(max-width:920px){.hero{grid-template-columns:1fr;gap:28px}.heroAside{min-height:0}.heroAside .note{align-self:flex-start}.heroCore{height:480px}.sectionGrid,.finalGrid{grid-template-columns:1fr;gap:30px}.systemFlow{grid-template-columns:1fr 1fr}.flowItem{border-left:0;border-top:1px solid rgba(255,255,255,.16);padding:24px 20px}.flowItem small{margin-bottom:28px}.results{grid-template-columns:1fr}.metric+.metric{border-left:0;border-top:1px solid var(--line);padding-left:0}.capability{grid-template-columns:1fr;gap:12px}.links{display:none}.architectureCore{height:360px}.finalCore{height:360px}}
+@media(max-width:620px){.wrap,.navin{width:calc(100% - 28px)}.navin{height:62px}.hero{padding-top:112px}.hero h1{font-size:58px}.hero p{font-size:15px}.heroActions{align-items:flex-start;flex-direction:column}.heroCore{height:400px}.statement{padding:70px 0 84px}.statement p{font-size:38px}.section,.faq{padding:86px 0}.section h2{font-size:48px}.systemPanel{margin-left:-14px;margin-right:-14px;padding:24px 16px}.architectureCore{height:320px}.systemFlow{grid-template-columns:1fr}.flowItem{padding-left:0}.control{padding:86px 0}.controlRow{grid-template-columns:1fr;gap:8px}.final{padding:90px 0 100px}.final h2{font-size:58px}.finalCore{height:320px}.foot{flex-direction:column}.navcta{display:none}.coreMeta,.finalCoreMeta{font-size:8px}.coreBadge{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+<style>
+.pageHero{padding:150px 0 10px}
+.pageHero h1{font-size:clamp(52px,6.6vw,104px);line-height:.92;letter-spacing:-.07em;font-weight:500;margin:0;max-width:1000px}
+.pageHero h1 span{color:#8a877f}
+.pageHero .lead{margin-top:28px}
+.meta{margin-top:26px;color:#77746d}
+.sched{padding:54px 0 110px}
+.schedCard{border:1px solid var(--line);background:#fff;overflow:hidden}
+@media(max-width:920px){.pageHero{padding:120px 0 6px}.sched{padding:34px 0 80px}}
+</style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="container nav-inner">
-    <a href="/" class="brand" aria-label="Spearflow AI"><img src="/assets/spearflow-logo.png" alt="Spearflow AI"></a>
-    <ul class="nav-links">
-      <li><a href="/#features">What You Get</a></li>
-      <li><a href="/#how">How it Works</a></li>
-      <li><a href="/case-studies">Case Studies</a></li>
-      <li class="nav-dd">
-        <a href="/industries" class="nav-dd-toggle">Industries</a>
-        <div class="nav-dd-menu">
-          <a href="/real-estate">Real Estate</a>
-          <a href="/chiropractic">Chiropractic</a>
-          <a href="/medical">Medical Practices</a>
-          <a href="/medspas">MedSpas</a>
-          <a href="/hvac">HVAC</a>
-          <a href="/remodelers">Remodelers</a>
-          <a href="/commercial">Commercial</a>
-          <a href="/general-contractors">General Contractors</a>
-          <a href="/restoration">Restoration</a>
-          <a href="/agriculture">Agriculture</a>
-          <a href="/legal">Legal</a>
-          <a href="/restaurants">Restaurants</a>
-          <a href="/industries#not-listed" class="nav-dd-alt">Don't see your sector? →</a>
-        </div>
-      </li>
-      <li><a href="/engagement">Work With Us</a></li>
-      <li><a href="/about">About</a></li>
-    </ul>
-    <a href="#schedule" class="btn nav-cta">Book a Consultation →</a>
-    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileMenu()">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="/#features">What You Get</a>
-    <a href="/#how">How it Works</a>
-    <a href="/case-studies">Case Studies</a>
-    <a href="/industries">Industries →</a>
-    <a href="/engagement">Work With Us</a>
-    <a href="/about">About</a>
-    <a href="#schedule" class="mobile-menu-cta">Book a Consultation →</a>
-  </div>
-</nav>
-
-<section class="final-cta">
-  <div class="container final-cta-inner">
-    <h2>Stop losing revenue to a <em>system that doesn't exist yet.</em></h2>
-    <p>Book a complimentary consultation. We'll walk through your current operations, identify the biggest revenue leaks, and show you what a system actually looks like. No pitch. No pressure.</p>
-    <a href="#schedule" class="btn btn-large">Schedule Your Consultation →</a>
-    <div class="cta-meta">No credit card · 30 minute call · Walk away with a plan</div>
-  </div>
-</section>
-
-<section class="scheduler" id="schedule">
-  <div class="container">
-    <div class="scheduler-card">
-      <div class="calendly-inline-widget" data-url="https://calendly.com/spearflowai/30min?hide_gdpr_banner=1" style="min-width:320px;height:760px;"></div>
-    </div>
-  </div>
-</section>
+<nav><div class="navin"><a class="brand" href="/"><img class="brandlogo" src="/assets/spearflow-logo.png" alt="Spear Flow" /></a><div class="links"><a href="#product">Product</a><a href="/industries">Industries</a><a href="/case-studies">Case Studies</a><a href="/engagement">Work With Us</a><a href="/about">About</a></div><a class="navcta" href="/book">Get started</a></div></nav>
+<main>
+<section class="pageHero"><div class="wrap">
+<div class="eyebrow mono reveal on">Book a consultation</div>
+<h1 class="reveal on">Pick a time.<br><span>We'll handle the rest.</span></h1>
+<p class="lead reveal on">A 30-minute call where we walk through your current operation, identify the biggest revenue leaks, and show you what a system actually looks like. No pitch. No pressure.</p>
+<div class="meta mono reveal on">No credit card &middot; 30 minute call &middot; Walk away with a plan</div>
+</div></section>
+<section class="sched"><div class="wrap"><div class="schedCard">
+<div class="calendly-inline-widget" data-url="https://calendly.com/spearflowai/30min?hide_gdpr_banner=1" style="min-width:320px;height:760px;"></div>
+</div></div></section>
+</main>
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <a href="/" class="footer-logo">Spear Flow</a>
-      <nav class="footer-nav">
-        <a href="/">Home</a>
-        <a href="/industries">Industries</a>
-        <a href="mailto:hello@spearflow.ai">Contact</a>
-      </nav>
-    </div>
-  </div>
-</footer>
-
-<script>
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const burger = document.getElementById('navBurger');
-  const open = menu.classList.toggle('open');
-  burger.classList.toggle('open', open);
-  burger.setAttribute('aria-expanded', open);
-}
-document.querySelectorAll('.mobile-menu a').forEach(function (a) {
-  a.addEventListener('click', function () {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('navBurger').classList.remove('open');
-    document.getElementById('navBurger').setAttribute('aria-expanded', 'false');
-  });
-});
-</script>
+<footer class="footer"><div class="wrap foot"><span>© 2026 Spear Flow</span><span class="footlinks"><a href="/industries">Industries</a><a href="/case-studies">Case Studies</a><a href="/engagement">Work With Us</a><a href="/about">About</a><a href="/compliance">Compliance</a><a href="/book">Book a Call</a></span></div></footer>
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a31e805db812b55512bfe89" data-source="WEB_USER"></script>
 </body>
 </html>

@@ -48,14 +48,6 @@
     .outcome-result { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1; color: var(--cream); margin-bottom: 16px; }
     .outcome-result em { font-style: italic; color: var(--accent-soft); }
     .outcome-desc { font-size: 15px; color: rgba(242,237,227,0.6); line-height: 1.6; max-width: 380px; }
-    .approach { padding: 100px 0; }
-    .approach-intro { font-family: var(--serif); font-weight: 300; font-size: clamp(24px, 3vw, 36px); line-height: 1.3; letter-spacing: -0.02em; color: var(--ink-soft); max-width: 760px; margin-bottom: 80px; }
-    .approach-intro em { font-style: italic; color: var(--accent); font-weight: 400; }
-    .approach-steps { border-top: 1px solid var(--line); }
-    .approach-step { display: grid; grid-template-columns: 80px 1fr; gap: 40px; padding: 48px 0; border-bottom: 1px solid var(--line); align-items: start; }
-    .step-n { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 56px; line-height: 1; color: var(--accent); opacity: 0.5; }
-    .step-title { font-family: var(--serif); font-weight: 500; font-size: 26px; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
-    .step-desc { font-size: 16px; color: var(--ink-soft); line-height: 1.7; }
     .pov { padding: 100px 0; background: var(--cream-deep); }
     .pov-heading { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 64px; max-width: 720px; }
     .pov-heading em { font-style: italic; color: var(--accent); font-weight: 300; }
@@ -79,8 +71,8 @@
     .footer-nav { display: flex; gap: 32px; flex-wrap: wrap; }
     .footer-nav a { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(242,237,227,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-nav a:hover { color: var(--accent-soft); }
-    @media (max-width: 900px) { .hero-business-case { grid-template-columns: 1fr; gap: 32px; } .outcome-list { grid-template-columns: 1fr; } .pov-grid { grid-template-columns: 1fr; } .approach-step { grid-template-columns: 56px 1fr; gap: 24px; } }
-    @media (max-width: 640px) { .container { padding: 0 24px; } .nav-back { font-size: 10px; letter-spacing: 0.08em; } .nav-right { gap: 14px; } .btn { padding: 10px 16px; font-size: 13px; } .hero { padding: 80px 0 60px; } .outcomes, .approach, .pov, .cta { padding: 80px 0; } }
+    @media (max-width: 900px) { .hero-business-case { grid-template-columns: 1fr; gap: 32px; } .outcome-list { grid-template-columns: 1fr; } .pov-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .container { padding: 0 24px; } .nav-back { font-size: 10px; letter-spacing: 0.08em; } .nav-right { gap: 14px; } .btn { padding: 10px 16px; font-size: 13px; } .hero { padding: 80px 0 60px; } .outcomes, .pov, .cta { padding: 80px 0; } }
     .brand { line-height: 0; }
     .brand::after { content: none; }
     .brand img { height: 44px; width: auto; display: block; border-radius: 8px; }
@@ -141,42 +133,7 @@
     </div>
   </section>
 
-  <section class="approach">
-    <div class="container">
-      <div class="section-label-dark">How We Work</div>
-      <p class="approach-intro">We find out what missed calls and dead estimates are actually costing you before we build anything. <em>The number is always bigger than the owner thinks.</em></p>
-      <div class="approach-steps">
-        <div class="approach-step">
-          <div class="step-n">01</div>
-          <div class="step-body">
-            <div class="step-title">Revenue Leak Audit</div>
-            <p class="step-desc">We map your intake from first ring to signed contract. We find where calls go to voicemail, where estimates stall, and where past clients sit idle. We quantify what each gap costs per month, the number most contractors have never run.</p>
-          </div>
-        </div>
-        <div class="approach-step">
-          <div class="step-n">02</div>
-          <div class="step-body">
-            <div class="step-title">System Build</div>
-            <p class="step-desc">AI receptionist configured for your trades, service area, and job types, with qualifying questions that match how you actually bid. Full workflow stack: live-answer intake, estimate follow-up, lead qualification, and past-client reactivation, wired into how you already run.</p>
-          </div>
-        </div>
-        <div class="approach-step">
-          <div class="step-n">03</div>
-          <div class="step-body">
-            <div class="step-title">30-Day Launch Window</div>
-            <p class="step-desc">Live and monitored against the audit baseline. Answer rate, estimate close rate, qualified-lead rate. We tune the scripts and qualifying logic on real calls until it books like your sharpest office manager.</p>
-          </div>
-        </div>
-        <div class="approach-step">
-          <div class="step-n">04</div>
-          <div class="step-body">
-            <div class="step-title">Ongoing or Handoff</div>
-            <p class="step-desc">You get a real-time dashboard and full documentation. You own the system. We stay available to expand it as you add crews, trades, or a second market.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <section class="pov">
     <div class="container">

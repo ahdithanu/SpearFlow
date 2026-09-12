@@ -29,6 +29,31 @@ nav{position:fixed;z-index:80;left:0;right:0;top:0;background:rgba(243,241,235,.
 @media(max-width:920px){.hero{grid-template-columns:1fr;gap:28px}.heroAside{min-height:0}.heroAside .note{align-self:flex-start}.heroCore{height:480px}.sectionGrid,.finalGrid{grid-template-columns:1fr;gap:30px}.systemFlow{grid-template-columns:1fr 1fr}.flowItem{border-left:0;border-top:1px solid rgba(255,255,255,.16);padding:24px 20px}.flowItem small{margin-bottom:28px}.results{grid-template-columns:1fr}.metric+.metric{border-left:0;border-top:1px solid var(--line);padding-left:0}.capability{grid-template-columns:1fr;gap:12px}.links{display:none}.architectureCore{height:360px}.finalCore{height:360px}}
 @media(max-width:620px){.wrap,.navin{width:calc(100% - 28px)}.navin{height:62px}.hero{padding-top:112px}.hero h1{font-size:58px}.hero p{font-size:15px}.heroActions{align-items:flex-start;flex-direction:column}.heroCore{height:400px}.statement{padding:70px 0 84px}.statement p{font-size:38px}.section,.faq{padding:86px 0}.section h2{font-size:48px}.systemPanel{margin-left:-14px;margin-right:-14px;padding:24px 16px}.architectureCore{height:320px}.systemFlow{grid-template-columns:1fr}.flowItem{padding-left:0}.control{padding:86px 0}.controlRow{grid-template-columns:1fr;gap:8px}.final{padding:90px 0 100px}.final h2{font-size:58px}.finalCore{height:320px}.foot{flex-direction:column}.navcta{display:none}.coreMeta,.finalCoreMeta{font-size:8px}.coreBadge{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+
+.navdd{position:relative;display:inline-flex;align-items:center}
+.navdd>a:after{content:'▾';font-size:9px;margin-left:5px;color:#8a877f;display:inline-block;transition:transform .2s}
+.navdd:hover>a:after{color:#11110f;transform:rotate(180deg)}
+.navdd:before{content:'';position:absolute;top:100%;left:0;right:0;height:14px}
+.ddmenu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);min-width:232px;background:var(--paper);border:1px solid var(--line);padding:6px;display:flex;flex-direction:column;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:90;box-shadow:0 18px 44px rgba(17,17,15,.12)}
+.navdd:hover .ddmenu,.navdd:focus-within .ddmenu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(10px)}
+.ddmenu a{padding:9px 12px;font-size:12px;color:#56544e;white-space:nowrap}
+.ddmenu a:hover{background:var(--paper2);color:#11110f}
+.ddalt{margin-top:5px;border-top:1px solid var(--line);padding-top:10px!important;color:#11110f!important}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line);background:none;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:0}
+.burger span{display:block;width:16px;height:1.5px;background:var(--ink);transition:transform .22s ease,opacity .22s ease}
+.burger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.mmenu{display:none;flex-direction:column;background:var(--paper);border-top:1px solid var(--line);padding:8px 0 20px;max-height:calc(100svh - 68px);overflow-y:auto}
+.mmenu.open{display:flex}
+.mmw{width:calc(100% - 40px);margin:auto;display:flex;flex-direction:column}
+.mmenu a{padding:13px 0;font-size:14px;color:#3a3833;border-bottom:1px solid var(--line)}
+.mmenu a:active{color:#11110f}
+.mhead{font-weight:500;color:var(--ink)}
+.msub{display:flex;flex-direction:column;padding-left:14px;border-left:1px solid var(--line);margin:6px 0 6px 2px}
+.msub a{font-size:12.5px;color:#66645d;padding:9px 0;border-bottom:none}
+.mcta{margin-top:16px;background:var(--ink);color:var(--paper)!important;text-align:center;padding:13px 0!important;border-bottom:none!important;font-size:12px;letter-spacing:.04em}
+@media(max-width:920px){.burger{display:flex}}
 </style>
 
 <style>
@@ -88,7 +113,7 @@ details.q p{max-width:820px;color:var(--muted);line-height:1.7;margin:0 0 26px;f
 
 </head>
 <body>
-<nav><div class="navin"><a class="brand" href="/"><img class="brandlogo" src="/assets/spearflow-logo.png" alt="Spear Flow" /></a><div class="links"><a href="#product">Product</a><a href="/industries">Industries</a><a href="/case-studies">Case Studies</a><a href="/engagement">Work With Us</a><a href="/about">About</a></div><a class="navcta" href="/book">Get started</a></div></nav>
+<nav><div class="navin"><a class="brand" href="/"><img class="brandlogo" src="/assets/spearflow-logo.png" alt="Spear Flow" /></a><div class="links"><a href="/#product">Product</a><span class="navdd"><a href="/industries">Industries</a><div class="ddmenu"><a href="/real-estate">Real Estate</a><a href="/chiropractic">Chiropractic</a><a href="/medical">Medical Practices</a><a href="/medspas">MedSpas</a><a href="/hvac">HVAC</a><a href="/remodelers">Remodelers</a><a href="/commercial">Commercial</a><a href="/general-contractors">General Contractors</a><a href="/restoration">Restoration</a><a href="/agriculture">Agriculture</a><a href="/legal">Legal</a><a href="/restaurants">Restaurants</a><a class="ddalt" href="/industries#not-listed">Don't see your sector? &rarr;</a></div></span><a href="/case-studies">Case Studies</a><a href="/engagement">Work With Us</a><a href="/about">About</a></div><a class="navcta" href="/book">Get started</a><button class="burger" id="burger" aria-label="Menu" aria-expanded="false" onclick="toggleM()"><span></span><span></span><span></span></button></div><div class="mmenu" id="mmenu"><div class="mmw"><a href="/#product">Product</a><a class="mhead" href="/industries">Industries</a><div class="msub"><a href="/real-estate">Real Estate</a><a href="/chiropractic">Chiropractic</a><a href="/medical">Medical Practices</a><a href="/medspas">MedSpas</a><a href="/hvac">HVAC</a><a href="/remodelers">Remodelers</a><a href="/commercial">Commercial</a><a href="/general-contractors">General Contractors</a><a href="/restoration">Restoration</a><a href="/agriculture">Agriculture</a><a href="/legal">Legal</a><a href="/restaurants">Restaurants</a><a href="/industries#not-listed">Don't see your sector?</a></div><a href="/case-studies">Case Studies</a><a href="/engagement">Work With Us</a><a href="/about">About</a><a class="mcta" href="/book">Get started &rarr;</a></div></div></nav>
 <main>
 <section class="pageHero"><div class="wrap">
 <div class="eyebrow mono reveal on">Compliance</div>
@@ -101,5 +126,13 @@ const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target
 document.querySelectorAll('.reveal:not(.on)').forEach(el=>io.observe(el));
 </script>
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a31e805db812b55512bfe89" data-source="WEB_USER"></script>
+<script>
+function toggleM(){var m=document.getElementById('mmenu'),b=document.getElementById('burger');
+var o=m.classList.toggle('open');b.classList.toggle('open',o);b.setAttribute('aria-expanded',o);}
+document.querySelectorAll('.mmenu a').forEach(function(a){a.addEventListener('click',function(){
+document.getElementById('mmenu').classList.remove('open');
+document.getElementById('burger').classList.remove('open');
+document.getElementById('burger').setAttribute('aria-expanded','false');});});
+</script>
 </body>
 </html>

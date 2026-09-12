@@ -1,193 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <title>Remodelers &amp; Specialty Trades — Spear Flow</title>
-  <meta name="description" content="Spear Flow builds AI systems for remodelers and specialty trade contractors. Answer every call from the job site, follow up on every estimate, and stop losing five-figure jobs to whoever picked up first.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root { --cream: #F2EDE3; --cream-deep: #E8E1D2; --ink: #13110F; --ink-soft: #2A2622; --muted: #6B6259; --line: #D9D1BF; --accent: #C84A1F; --accent-soft: #E8814F; --serif: 'Fraunces', Georgia, serif; --sans: 'Geist', -apple-system, sans-serif; --mono: 'JetBrains Mono', monospace; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
-    .nav { position: sticky; top: 0; z-index: 100; background: rgba(242,237,227,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--line); }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
-    .logo { font-family: var(--serif); font-weight: 500; font-size: 22px; letter-spacing: -0.02em; font-style: italic; text-decoration: none; color: var(--ink); }
-    .logo::after { content: '.'; color: var(--accent); }
-    .nav-right { display: flex; align-items: center; gap: 32px; }
-    .nav-back { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-back:hover { color: var(--accent); }
-    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--cream); padding: 12px 22px; border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s; }
-    .btn:hover { background: var(--accent); transform: translateY(-1px); }
-    .hero { padding: 120px 0 80px; border-bottom: 1px solid var(--line); }
-    .hero-sector { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 40px; display: flex; align-items: center; gap: 12px; }
-    .hero-sector::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
-    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(52px, 7vw, 96px); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 48px; max-width: 900px; }
-    .hero h1 em { font-style: italic; font-weight: 300; color: var(--accent); }
-    .hero-business-case { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; padding-top: 48px; border-top: 1px solid var(--line); }
-    .hero-bc-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 16px; }
-    .hero-bc-text { font-size: 18px; color: var(--ink-soft); line-height: 1.65; }
-    .hero-bc-text strong { color: var(--ink); font-weight: 500; }
-    .outcomes { padding: 100px 0; background: var(--ink); color: var(--cream); position: relative; }
-    .outcomes::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
-    .section-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-soft); margin-bottom: 48px; display: flex; align-items: center; gap: 12px; }
-    .section-label::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); }
-    .section-label-dark { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 48px; display: flex; align-items: center; gap: 12px; }
-    .section-label-dark::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
-    .outcome-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(242,237,227,0.08); border: 1px solid rgba(242,237,227,0.08); }
-    .outcome-item { padding: 48px 40px; }
-    .outcome-result { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1; color: var(--cream); margin-bottom: 16px; }
-    .outcome-result em { font-style: italic; color: var(--accent-soft); }
-    .outcome-desc { font-size: 15px; color: rgba(242,237,227,0.6); line-height: 1.6; max-width: 380px; }
-    .pov { padding: 100px 0; background: var(--cream-deep); }
-    .pov-heading { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 64px; max-width: 720px; }
-    .pov-heading em { font-style: italic; color: var(--accent); font-weight: 300; }
-    .pov-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); }
-    .pov-card { background: var(--cream-deep); padding: 40px 32px; }
-    .pov-angle { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 16px; display: block; }
-    .pov-card h4 { font-family: var(--serif); font-weight: 500; font-size: 20px; letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 12px; }
-    .pov-card p { font-size: 15px; color: var(--muted); line-height: 1.65; }
-    .cta { padding: 120px 0; background: var(--ink); color: var(--cream); position: relative; }
-    .cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
-    .cta-inner { max-width: 680px; }
-    .cta h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(36px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; }
-    .cta h2 em { font-style: italic; color: var(--accent-soft); }
-    .cta p { font-size: 18px; color: rgba(242,237,227,0.65); line-height: 1.6; margin-bottom: 48px; max-width: 520px; }
-    .btn-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--cream); padding: 20px 36px; border-radius: 100px; text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.3s; }
-    .btn-cta:hover { background: var(--accent-soft); transform: translateY(-2px); }
-    footer { background: var(--ink); padding: 48px 0; border-top: 1px solid rgba(242,237,227,0.08); }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-    .footer-logo { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 22px; color: var(--cream); text-decoration: none; }
-    .footer-logo::after { content: '.'; color: var(--accent); }
-    .footer-nav { display: flex; gap: 32px; flex-wrap: wrap; }
-    .footer-nav a { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(242,237,227,0.4); text-decoration: none; transition: color 0.2s; }
-    .footer-nav a:hover { color: var(--accent-soft); }
-    @media (max-width: 900px) { .hero-business-case { grid-template-columns: 1fr; gap: 32px; } .outcome-list { grid-template-columns: 1fr; } .pov-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 640px) { .container { padding: 0 24px; } .nav-back { font-size: 10px; letter-spacing: 0.08em; } .nav-right { gap: 14px; } .btn { padding: 10px 16px; font-size: 13px; } .hero { padding: 80px 0 60px; } .outcomes, .pov, .cta { padding: 80px 0; } }
-    .brand { line-height: 0; }
-    .brand::after { content: none; }
-    .brand img { height: 44px; width: auto; display: block; border-radius: 8px; }
-    @media (max-width: 640px) { .brand img { height: 38px; } }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Remodelers &amp; Specialty Trades — Spear Flow</title>
+<meta name="description" content="Spear Flow builds AI systems for remodelers and specialty trade contractors. Answer every call from the job site, follow up on every estimate, and stop losing five-figure jobs to whoever picked up first." />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--paper:#f3f1eb;--paper2:#ebe8e0;--ink:#11110f;--muted:#66645d;--line:#cbc8bf;--dark:#11110f;--dark2:#191916;--light:#f4f1e9;--max:1320px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 64px));margin:auto}.mono{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.13em;font-size:10px}.rule{border-top:1px solid var(--line)}
+nav{position:fixed;z-index:80;left:0;right:0;top:0;background:rgba(243,241,235,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(17,17,15,.1)}.navin{width:min(var(--max),calc(100% - 64px));margin:auto;height:68px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:600;font-size:15px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}.brandlogo{height:34px;width:auto;display:block;border-radius:6px}.brandmark{width:22px;height:22px;position:relative}.brandmark:before,.brandmark:after{content:'';position:absolute;background:var(--ink)}.brandmark:before{width:2px;height:22px;left:10px}.brandmark:after{width:22px;height:2px;top:10px}.links{display:flex;gap:30px;font-size:12px;color:#56544e}.links a:hover{color:#111}.navcta{font-size:12px;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.hero{min-height:100svh;padding:130px 0 84px;display:grid;grid-template-columns:1.12fr .88fr;gap:54px;align-items:center}.heroCopy{max-width:900px}.eyebrow{margin-bottom:28px;color:#55534d}.hero h1{font-size:clamp(64px,8.2vw,124px);line-height:.88;letter-spacing:-.075em;font-weight:500;margin:0;max-width:980px}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:720px;margin:32px 0 30px}.heroActions{display:flex;gap:20px;align-items:center}.primary{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:14px 18px;font-size:12px}.textLink{font-size:12px;border-bottom:1px solid #8f8c83;padding-bottom:3px}.heroAside{display:flex;flex-direction:column;justify-content:end;min-height:650px}.heroAside .note{border-top:1px solid var(--line);padding-top:16px;color:#737068;line-height:1.6;font-size:12px;max-width:340px;align-self:flex-end}.heroAside strong{display:block;color:var(--ink);font-size:12px;font-weight:500;margin-bottom:8px}
+.heroCore{height:520px;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.heroCore canvas,.architectureCore canvas,.finalCore canvas{position:absolute;inset:0;width:100%!important;height:100%!important}.coreMeta{position:absolute;z-index:3;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;color:#6b6962;pointer-events:none}.coreBadge{position:absolute;z-index:3;right:18px;top:18px;border:1px solid rgba(17,17,15,.2);padding:8px 10px;color:#5e5b54;background:rgba(243,241,235,.55);backdrop-filter:blur(10px)}
+.statement{padding:84px 0 110px}.statement p{font-size:clamp(34px,4.2vw,64px);line-height:1.03;letter-spacing:-.052em;max-width:1180px;margin:0;font-weight:500}.statement p span{color:#8a877f}
+.section{padding:116px 0}.sectionGrid{display:grid;grid-template-columns:.42fr 1fr;gap:80px}.kicker{color:#64615b}.section h2{font-size:clamp(48px,5.8vw,86px);line-height:.94;letter-spacing:-.065em;font-weight:500;margin:0 0 32px;max-width:900px}.lead{font-size:16px;line-height:1.75;color:var(--muted);max-width:760px;margin:0}.capabilities{margin-top:64px;border-top:1px solid var(--line)}.capability{display:grid;grid-template-columns:.26fr .74fr;padding:38px 0;border-bottom:1px solid var(--line);gap:40px}.capability .num{color:#77746d}.capability h3{font-size:29px;letter-spacing:-.045em;font-weight:500;margin:0 0 13px}.capability p{margin:0;color:var(--muted);line-height:1.7;max-width:700px}.capability .mini{margin-top:20px;color:#7a776f}
+.systemPanel{margin-top:68px;background:var(--dark);color:var(--light);padding:34px}.systemTop{display:flex;justify-content:space-between;gap:30px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.16)}.systemTop span{color:#8f8d87}.architectureCore{height:420px;position:relative;border-bottom:1px solid rgba(255,255,255,.16);overflow:hidden}.architectureCore:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,15,.95),transparent 18%,transparent 82%,rgba(17,17,15,.95));pointer-events:none}.archLabel{position:absolute;z-index:3;top:18px;left:0;color:#817f78}.archState{position:absolute;z-index:3;right:0;bottom:18px;color:#817f78}.systemFlow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:34px}.flowItem{padding:0 18px 8px;border-left:1px solid rgba(255,255,255,.18);min-height:150px}.flowItem:first-child{padding-left:0;border-left:0}.flowItem small{display:block;color:#76746e;margin-bottom:42px}.flowItem strong{font-size:18px;font-weight:500;letter-spacing:-.03em}.flowItem p{color:#8d8b85;font-size:12px;line-height:1.6;margin:10px 0 0}
+.results{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.metric{padding:34px 28px 40px 0}.metric+.metric{border-left:1px solid var(--line);padding-left:28px}.metric strong{font-size:clamp(58px,6vw,92px);letter-spacing:-.07em;font-weight:500;display:block}.metric p{color:var(--muted);font-size:13px;line-height:1.6;max-width:270px}
+.control{background:var(--dark);color:var(--light);padding:116px 0}.control .sectionGrid{align-items:start}.control .kicker{color:#85827b}.control h2{color:var(--light)}.control .lead{color:#9c9992}.controlList{margin-top:54px;border-top:1px solid rgba(255,255,255,.17)}.controlRow{display:grid;grid-template-columns:.22fr .78fr;gap:30px;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.17)}.controlRow span{color:#77746e}.controlRow h3{font-size:24px;letter-spacing:-.04em;font-weight:500;margin:0 0 10px}.controlRow p{margin:0;color:#99968f;line-height:1.65;max-width:700px;font-size:14px}
+.faq{padding:116px 0}.faqList{margin-top:56px;border-top:1px solid var(--line)}details{border-bottom:1px solid var(--line)}summary{list-style:none;cursor:pointer;padding:28px 0;display:grid;grid-template-columns:1fr auto;gap:24px;font-size:22px;letter-spacing:-.03em}summary::-webkit-details-marker{display:none}summary:after{content:'+';font-family:'DM Mono';font-size:16px;color:#77746d}details[open] summary:after{content:'×'}details p{max-width:800px;color:var(--muted);line-height:1.7;margin:0 0 32px;font-size:14px}
+.final{padding:122px 0 132px;border-top:1px solid var(--line)}.finalGrid{display:grid;grid-template-columns:1.06fr .94fr;gap:58px;align-items:center}.final h2{font-size:clamp(60px,7.6vw,112px);line-height:.9;letter-spacing:-.074em;font-weight:500;margin:18px 0 0;max-width:900px}.finalCopy p{max-width:600px;color:var(--muted);line-height:1.7;margin:32px 0}.finalCore{height:430px;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.finalCoreMeta{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;color:#77746d;z-index:3}
+.footer{padding:28px 0 38px;border-top:1px solid var(--line);font-size:11px;color:#77746c}.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.footlinks{display:flex;gap:22px;flex-wrap:wrap}.footlinks a:hover{color:var(--ink)}.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.on{opacity:1;transform:none}
+@media(max-width:920px){.hero{grid-template-columns:1fr;gap:28px}.heroAside{min-height:0}.heroAside .note{align-self:flex-start}.heroCore{height:480px}.sectionGrid,.finalGrid{grid-template-columns:1fr;gap:30px}.systemFlow{grid-template-columns:1fr 1fr}.flowItem{border-left:0;border-top:1px solid rgba(255,255,255,.16);padding:24px 20px}.flowItem small{margin-bottom:28px}.results{grid-template-columns:1fr}.metric+.metric{border-left:0;border-top:1px solid var(--line);padding-left:0}.capability{grid-template-columns:1fr;gap:12px}.links{display:none}.architectureCore{height:360px}.finalCore{height:360px}}
+@media(max-width:620px){.wrap,.navin{width:calc(100% - 28px)}.navin{height:62px}.hero{padding-top:112px}.hero h1{font-size:58px}.hero p{font-size:15px}.heroActions{align-items:flex-start;flex-direction:column}.heroCore{height:400px}.statement{padding:70px 0 84px}.statement p{font-size:38px}.section,.faq{padding:86px 0}.section h2{font-size:48px}.systemPanel{margin-left:-14px;margin-right:-14px;padding:24px 16px}.architectureCore{height:320px}.systemFlow{grid-template-columns:1fr}.flowItem{padding-left:0}.control{padding:86px 0}.controlRow{grid-template-columns:1fr;gap:8px}.final{padding:90px 0 100px}.final h2{font-size:58px}.finalCore{height:320px}.foot{flex-direction:column}.navcta{display:none}.coreMeta,.finalCoreMeta{font-size:8px}.coreBadge{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+
+<style>
+.pageHero{padding:150px 0 26px}
+.pageHero .eyebrow{margin-bottom:26px}
+.pageHero h1{font-size:clamp(52px,6.6vw,104px);line-height:.92;letter-spacing:-.07em;font-weight:500;margin:0;max-width:1000px}
+.pageHero h1 span{color:#8a877f}
+.heroSplit{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:64px;padding-top:36px;border-top:1px solid var(--line)}
+.heroSplit h4{margin:0 0 14px;font-weight:400;color:#64615b}
+.heroSplit p{margin:0;color:var(--muted);line-height:1.75;font-size:15px}
+.heroSplit strong{color:var(--ink);font-weight:500}
+.backLink{display:inline-block;margin-top:40px;font-size:12px;border-bottom:1px solid #8f8c83;padding-bottom:3px}
+.finalCopy .primary{margin-top:6px}
+@media(max-width:920px){.pageHero{padding:120px 0 18px}.heroSplit{grid-template-columns:1fr;gap:28px}}
+</style>
+
 </head>
 <body>
-  <nav class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <a href="/" class="logo brand" aria-label="Spearflow AI"><img src="/assets/spearflow-logo.png" alt="Spearflow AI"></a>
-        <div class="nav-right">
-          <a href="/industries" class="nav-back">&larr; All Industries</a>
-          <a href="/book" class="btn">Book a Call &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </nav>
+<nav><div class="navin"><a class="brand" href="/"><img class="brandlogo" src="/assets/spearflow-logo.png" alt="Spear Flow" /></a><div class="links"><a href="#product">Product</a><a href="/industries">Industries</a><a href="/case-studies">Case Studies</a><a href="/engagement">Work With Us</a><a href="/about">About</a></div><a class="navcta" href="/book">Get started</a></div></nav>
+<main>
+<section class="pageHero"><div class="wrap">
+<div class="eyebrow mono reveal on">Remodelers &amp; Specialty Trades</div>
+<h1 class="reveal on">You're on a roof.<br>The phone rings. The<br>job goes to <span>voicemail.</span></h1>
+<div class="heroSplit reveal on"><div><h4 class="mono">The Business Case</h4><p>A remodeler's phone rings while they're on a job, hands full, and the caller books whoever answers live. <strong>One missed call is a five-figure job handed to a competitor</strong>, and it's a system problem, not a hustle problem.</p></div>
+<div><h4 class="mono">Who We Work With</h4><p>Roofers, kitchen and bath remodelers, flooring, windows, decks, concrete, and painting contractors who run their intake off a cell phone they can't answer while they're working, and lose bids because of it.</p></div></div>
+</div></section>
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-sector">Remodelers &amp; Specialty Trades</div>
-      <h1>You're on a roof.<br>The phone rings. The<br>job goes to <em>voicemail.</em></h1>
-      <div class="hero-business-case">
-        <div>
-          <div class="hero-bc-label">The Business Case</div>
-          <p class="hero-bc-text">A remodeler's phone rings while they're on a job, hands full, and the caller books whoever answers live. <strong>One missed call is a five-figure job handed to a competitor</strong>, and it's a system problem, not a hustle problem.</p>
-        </div>
-        <div>
-          <div class="hero-bc-label">Who We Work With</div>
-          <p class="hero-bc-text">Roofers, kitchen and bath remodelers, flooring, windows, decks, concrete, and painting contractors who run their intake off a cell phone they can't answer while they're working, and lose bids because of it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="section"><div class="wrap sectionGrid">
+<div class="kicker mono reveal">What changes</div>
+<div><div class="capabilities" style="margin-top:0">
+<article class="capability reveal"><div class="num mono">01</div><div><h3>Every call answered live.</h3><p>The AI receptionist picks up while you're on the ladder, captures the job details, and books the estimate. The caller gets a real answer instead of voicemail, so the bid stays yours instead of going to the next number on their list.</p></div></article>
+<article class="capability reveal"><div class="num mono">02</div><div><h3>Every estimate followed up.</h3><p>A remodel bid is a $15K to $80K decision, and homeowners collect three and go cold on whoever chases slowest. Automated follow-up keeps every quote warm until they sign or say no, without you remembering to call.</p></div></article>
+<article class="capability reveal"><div class="num mono">03</div><div><h3>Tire-kickers filtered out.</h3><p>Intake captures budget, scope, and timeline before it hits your calendar, so you drive to real jobs, not to price-shoppers. Your windshield time goes to bids that close.</p></div></article>
+<article class="capability reveal"><div class="num mono">04</div><div><h3>Past clients reactivated.</h3><p>Every homeowner you've worked for is a referral source and a repeat remodel. Reactivation and review campaigns turn finished jobs into the next three, from a list you already earned.</p></div></article>
+</div></div></div></section>
 
-  <section class="outcomes">
-    <div class="container">
-      <div class="section-label">What Changes</div>
-      <div class="outcome-list">
-        <div class="outcome-item">
-          <div class="outcome-result">Every call<br><em>answered live.</em></div>
-          <p class="outcome-desc">The AI receptionist picks up while you're on the ladder, captures the job details, and books the estimate. The caller gets a real answer instead of voicemail, so the bid stays yours instead of going to the next number on their list.</p>
-        </div>
-        <div class="outcome-item">
-          <div class="outcome-result">Every estimate<br><em>followed up.</em></div>
-          <p class="outcome-desc">A remodel bid is a $15K to $80K decision, and homeowners collect three and go cold on whoever chases slowest. Automated follow-up keeps every quote warm until they sign or say no, without you remembering to call.</p>
-        </div>
-        <div class="outcome-item">
-          <div class="outcome-result">Tire-kickers<br><em>filtered out.</em></div>
-          <p class="outcome-desc">Intake captures budget, scope, and timeline before it hits your calendar, so you drive to real jobs, not to price-shoppers. Your windshield time goes to bids that close.</p>
-        </div>
-        <div class="outcome-item">
-          <div class="outcome-result">Past clients<br><em>reactivated.</em></div>
-          <p class="outcome-desc">Every homeowner you've worked for is a referral source and a repeat remodel. Reactivation and review campaigns turn finished jobs into the next three, from a list you already earned.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="control"><div class="wrap sectionGrid">
+<div class="kicker mono reveal">What we know</div>
+<div><div class="controlList" style="margin-top:0">
+<div class="controlRow reveal"><span class="mono">Speed</span><div><h3>The first live answer usually wins the bid.</h3><p>Homeowners calling for a remodel are working down a list of three or four names. They book the estimate with whoever picks up and sounds competent first. A missed call isn't a delayed lead, it's a bid that went to a competitor before you ever knew it existed.</p></div></div>
+<div class="controlRow reveal"><span class="mono">Ticket Size</span><div><h3>One saved job pays for the year.</h3><p>Trade tickets are large enough that a single recovered remodel covers the cost of the entire system many times over. You don't need volume to justify it. You need to stop losing the jobs that are already calling you.</p></div></div>
+<div class="controlRow reveal"><span class="mono">Time</span><div><h3>Your job site and your phone compete, and the phone loses.</h3><p>The core bind of a working contractor is that the hours you earn money are the exact hours you can't answer the phone that brings the next job. A system is the only thing that answers both at once. Hiring an office person is slower, costlier, and quits.</p></div></div>
+</div></div></div></section>
 
-  
-
-  <section class="pov">
-    <div class="container">
-      <h2 class="pov-heading">What we know about <em>running a trade business</em> that shapes how we build.</h2>
-      <div class="pov-grid">
-        <div class="pov-card">
-          <span class="pov-angle">Speed</span>
-          <h4>The first live answer usually wins the bid.</h4>
-          <p>Homeowners calling for a remodel are working down a list of three or four names. They book the estimate with whoever picks up and sounds competent first. A missed call isn't a delayed lead, it's a bid that went to a competitor before you ever knew it existed.</p>
-        </div>
-        <div class="pov-card">
-          <span class="pov-angle">Ticket Size</span>
-          <h4>One saved job pays for the year.</h4>
-          <p>Trade tickets are large enough that a single recovered remodel covers the cost of the entire system many times over. You don't need volume to justify it. You need to stop losing the jobs that are already calling you.</p>
-        </div>
-        <div class="pov-card">
-          <span class="pov-angle">Time</span>
-          <h4>Your job site and your phone compete, and the phone loses.</h4>
-          <p>The core bind of a working contractor is that the hours you earn money are the exact hours you can't answer the phone that brings the next job. A system is the only thing that answers both at once. Hiring an office person is slower, costlier, and quits.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="container">
-      <div class="cta-inner">
-        <div class="section-label">Next Step</div>
-        <h2>Start with understanding<br>what it's <em>actually costing.</em></h2>
-        <p>We map your current intake and follow-up, quantify what every missed call and cold estimate is costing, and show you what closing those gaps would require. Free, no obligation, no pitch deck.</p>
-        <a href="/book" class="btn-cta">Book the Audit &rarr;</a>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <a href="/" class="footer-logo">Spear Flow</a>
-        <nav class="footer-nav">
-          <a href="/industries">Industries</a>
-          <a href="/real-estate">Real Estate</a>
-          <a href="/chiropractic">Chiropractic</a>
-          <a href="/medical">Medical</a>
-          <a href="/medspas">MedSpas</a>
-          <a href="/hvac">HVAC</a>
-          <a href="/remodelers">Remodelers</a>           <a href="/commercial">Commercial</a>           <a href="/general-contractors">Builders</a>           <a href="/restoration">Restoration</a>
-          <a href="/agriculture">Agriculture</a>
-          <a href="/legal">Legal</a>
-          <a href="/restaurants">Restaurants</a>
-          <a href="mailto:hello@spearflow.ai">Contact</a>
-        </nav>
-      </div>
-    </div>
-  </footer>
+<section class="final"><div class="wrap">
+<div class="finalCopy reveal"><div class="kicker mono">Next step</div>
+<h2>Start with understanding<br>what it's <span>actually costing.</span></h2>
+<p>We map your current intake and follow-up, quantify what every missed call and cold estimate is costing, and show you what closing those gaps would require. Free, no obligation, no pitch deck.</p>
+<a class="primary" href="/book">Book the Audit <span>&rarr;</span></a>
+<a class="backLink" href="/industries">&larr; All industries</a>
+</div></div></section>
+</main>
+<footer class="footer"><div class="wrap foot"><span>© 2026 Spear Flow</span><span class="footlinks"><a href="/industries">Industries</a><a href="/case-studies">Case Studies</a><a href="/engagement">Work With Us</a><a href="/about">About</a><a href="/compliance">Compliance</a><a href="/book">Book a Call</a></span></div></footer>
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal:not(.on)').forEach(el=>io.observe(el));
+</script>
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a31e805db812b55512bfe89" data-source="WEB_USER"></script>
 </body>
 </html>

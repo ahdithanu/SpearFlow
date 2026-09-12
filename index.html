@@ -63,19 +63,19 @@ nav{position:fixed;z-index:80;left:0;right:0;top:0;background:rgba(243,241,235,.
 .tlogo img{height:100%;width:auto;display:block;filter:grayscale(1)}
 .tlogo[data-l="vanguard"] img{height:80%}
 .tlogo[data-l="nyl"] img{height:112%}
-.people3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line)}
-.p3{padding:30px 26px 34px 0;border-bottom:1px solid var(--line)}
-.p3+.p3{padding-left:26px;border-left:1px solid var(--line)}
-.p3 h3{font-size:25px;letter-spacing:-.04em;font-weight:500;margin:0 0 6px}
-.p3 .r{color:#77746d;margin-bottom:16px}
-.p3 .b{color:#4d4b46;font-size:14px;line-height:1.65;margin:0}
+
+
+.p3+
+
+
+
 
 .logo-modal{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(17,17,15,.86);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
 .logo-modal.open{opacity:1;visibility:visible}
 .logo-modal img{max-width:min(460px,86vw);max-height:82vh;transform:scale(.95);transition:transform .3s cubic-bezier(.16,1,.3,1)}
 .logo-modal.open img{transform:scale(1)}
 .logo-modal-close{position:absolute;top:26px;right:30px;width:42px;height:42px;border:1px solid rgba(244,241,233,.25);background:none;color:#f4f1e9;font-size:22px;cursor:pointer}
-@media(max-width:920px){.trust{gap:26px}.tlogos{gap:30px}.people3{grid-template-columns:1fr}.p3,.p3+.p3{padding:24px 0 28px;border-left:0}}
+@media(max-width:920px){.trust{gap:26px}.tlogos{gap:30px}.p3,.p3+}
 
 .heroSec{position:relative;overflow:hidden;min-height:100svh;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(120% 90% at 70% 40%,#0c0d11 0%,#050507 60%,#020203 100%);color:#e8ecf2}
 #spearflow-hero-canvas{position:absolute;inset:0;z-index:1;pointer-events:none}
@@ -139,12 +139,7 @@ nav.onDark .burger span{background:#e8ecf2}
 <div class="kicker mono reveal">Who we are</div>
 <div><div class="reveal"><h2>Operators first. Consultants second.</h2>
 <p class="lead">We've built mission-critical systems at enterprise scale, shipped startups from zero, and operated inside Fortune 100 companies. Now we build for the businesses that don't get McKinsey access.</p></div>
-<div class="people3">
-<div class="p3 reveal"><h3>Vik</h3><div class="r mono">Engineering &amp; AI Systems</div><p class="b">A University of Maryland Computer Science and Finance graduate and AWS-certified engineer who has shipped mission-critical systems at Raytheon for NASA's Artemis program and architected cloud infrastructure at Vanguard. He's also the founder of BigShot Bets and has built LLM-powered data interfaces and multi-agent AI pipelines from the ground up.</p></div>
-<div class="p3 reveal"><h3>Andy</h3><div class="r mono">AI Strategy &amp; Systems</div><p class="b">A Northwestern Master's in Data Science graduate with a concentration in Artificial Intelligence, who has scaled revenue operations and customer success at Alteryx, Loris.ai, and Zeal. He's spent his career inside the exact bottleneck Spear Flow solves &mdash; capturing inbound demand the moment it lands and converting it into booked revenue.</p></div>
-<div class="p3 reveal"><h3>Divyesh</h3><div class="r mono">Product &amp; Growth</div><p class="b">A Purdue MBA in Management Information Systems with a background spanning biotech, talent acquisition, real estate, and Fortune 100 New York Life, plus a prior startup of his own. He applies product marketing and growth strategy to streamline operations and drive engagement.</p></div>
-</div>
-<div style="margin-top:38px"><a class="textLink" href="/about">More about the team &rarr;</a></div>
+<div style="margin-top:30px"><a class="textLink" href="/about">More about us &rarr;</a></div>
 </div></div></section>
 <section class="final"><div class="wrap finalGrid"><div class="finalCopy reveal"><div class="mono">Ready to get started?</div><h2>Make revenue operations run as one system.</h2><p>Map the workflow, identify the leaks, and design the intelligence layer around the way your business actually operates.</p><a class="primary" href="/book">Build your system <span>→</span></a></div><div class="finalCore reveal" id="finalCore"><div class="finalCoreMeta mono"><span>State 03 / Resolve</span><span>Action → Revenue</span></div></div></div></section>
 </main>

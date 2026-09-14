@@ -225,87 +225,160 @@ m.addEventListener('click',function(e){if(e.target===m||e.target.classList.conta
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')){m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.style.overflow='';}});})();
 </script>
 <script type="module">
-window.SF_CONFIG = { accentColor: "#e8ecf2", loopSeconds: 7.5, dotShell: true, cameraDrift: true };
+window.SF_CONFIG = { accentColor: "#e8ecf2", loopSeconds: 7.5, targetRings: true, cameraDrift: true, mouseParallax: true };
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js';
 const host = document.getElementById('spearflow-hero-canvas');
 if (host) {
-const cfg=()=>Object.assign({accentColor:"#e8ecf2",loopSeconds:7.5,dotShell:true,cameraDrift:true},window.SF_CONFIG||{});
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
-host.appendChild(renderer.domElement);renderer.domElement.style.cssText='display:block;width:100%;height:100%;';
-const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(38,1,.1,100);
-const pivot=new THREE.Group();scene.add(pivot);
-const target=new THREE.Group();pivot.add(target);
-const coreMat=new THREE.MeshStandardMaterial({color:0x0a0b0d,roughness:.42,metalness:.25});
-const core=new THREE.Mesh(new THREE.SphereGeometry(1,96,96),coreMat);target.add(core);
-const shellMat=new THREE.PointsMaterial({color:0xffffff,size:.012,transparent:true,opacity:.38,depthWrite:false});
-const shellGeo=new THREE.BufferGeometry();
-{const n=2400,pos=new Float32Array(n*3),r=1.035;
-for(let i=0;i<n;i++){const y=1-(i/(n-1))*2;const rad=Math.sqrt(Math.max(0,1-y*y));const th=i*2.39996;
-pos[i*3]=Math.cos(th)*rad*r;pos[i*3+1]=y*r;pos[i*3+2]=Math.sin(th)*rad*r;}
-shellGeo.setAttribute('position',new THREE.BufferAttribute(pos,3));}
-const shell=new THREE.Points(shellGeo,shellMat);target.add(shell);
-const haloMat=new THREE.MeshBasicMaterial({color:0x7fa7ff,transparent:true,opacity:0,blending:THREE.AdditiveBlending,side:THREE.BackSide,depthWrite:false});
-const halo=new THREE.Mesh(new THREE.SphereGeometry(1.09,64,64),haloMat);target.add(halo);
-const steel=new THREE.MeshStandardMaterial({color:0xe3b34a,roughness:.2,metalness:1,transparent:true});
-const dark=new THREE.MeshStandardMaterial({color:0xa87c2e,roughness:.34,metalness:.95,transparent:true});
-const spear=new THREE.Group();pivot.add(spear);
-const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.038,.044,3,32),dark);shaft.rotation.x=Math.PI/2;shaft.position.z=1.75;spear.add(shaft);
-const tip=new THREE.Mesh(new THREE.ConeGeometry(.105,.62,32),steel);tip.rotation.x=-Math.PI/2;tip.position.z=.26;spear.add(tip);
-const collar=new THREE.Mesh(new THREE.CylinderGeometry(.062,.105,.18,32),steel);collar.rotation.x=Math.PI/2;collar.position.z=.6;spear.add(collar);
-for(const z of [1,2.55]){const ring=new THREE.Mesh(new THREE.TorusGeometry(.042,.012,12,32),steel);ring.position.z=z;spear.add(ring);}
-const butt=new THREE.Mesh(new THREE.SphereGeometry(.045,24,24),steel);butt.position.z=3.18;spear.add(butt);
-const trailMat=new THREE.MeshBasicMaterial({color:0x7fa7ff,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide});
-const trail=new THREE.Mesh(new THREE.CylinderGeometry(.008,.05,4.5,16,1,true),trailMat);trail.rotation.x=-Math.PI/2;trail.position.z=3.2;spear.add(trail);
-const impact=new THREE.Group();pivot.add(impact);
-const rings=[0,1,2].map(()=>{const m=new THREE.MeshBasicMaterial({color:0x7fa7ff,transparent:true,opacity:0,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,depthWrite:false});
-const mesh=new THREE.Mesh(new THREE.TorusGeometry(.3,.0055,8,96),m);impact.add(mesh);return mesh;});
-const flashMat=new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false});
-const flash=new THREE.Mesh(new THREE.CircleGeometry(.16,48),flashMat);impact.add(flash);
-scene.add(new THREE.AmbientLight(0xffffff,.12));
-const key=new THREE.DirectionalLight(0xffffff,2.1);key.position.set(4,5,3);scene.add(key);
-const rim=new THREE.DirectionalLight(0x7fa7ff,2.4);rim.position.set(-4,1.5,-3);scene.add(rim);
-const fill=new THREE.PointLight(0xffffff,8,12);fill.position.set(2,-2,4);scene.add(fill);
-let C=cfg();
-function applyConfig(){C=cfg();const a=new THREE.Color(C.accentColor);
-rim.color.copy(a);haloMat.color.copy(a);trailMat.color.copy(a);rings.forEach(r=>r.material.color.copy(a));shell.visible=!!C.dotShell;}
-addEventListener('sf-config',applyConfig);applyConfig();
-function resize(){const w=host.clientWidth||innerWidth,h=host.clientHeight||innerHeight;
-renderer.setSize(w,h,false);camera.aspect=w/h;const narrow=w<900;camera.fov=narrow?46:38;
-pivot.position.set(narrow?.15:2.55,narrow?-.5:.1,0);pivot.scale.setScalar(narrow?.72:.92);camera.updateProjectionMatrix();}
-addEventListener('resize',resize);new ResizeObserver(resize).observe(host);resize();
-const easeIn=t=>t*t*t;
-const dir=new THREE.Vector3(-.86,-.22,.46).normalize();
-const from=dir.clone().multiplyScalar(-8.5);const hit=dir.clone().multiplyScalar(-.99);
-const clock=new THREE.Clock();spear.scale.setScalar(1.15);
-impact.position.copy(hit);impact.lookAt(hit.clone().multiplyScalar(3));
-let vis=true;new IntersectionObserver(e=>{vis=e[0].isIntersecting},{threshold:.01}).observe(host);
-function frame(){requestAnimationFrame(frame);if(!vis)return;
-const el=clock.getElapsedTime();const loop=Math.max(3,C.loopSeconds);const t=reduced?.5:(el%loop)/loop;
-let travel,opacity=1,pen=0;
-if(t<.30){travel=easeIn(t/.30);}
-else if(t<.40){const k=(t-.30)/.10;travel=1;pen=Math.sin(k*Math.PI)*.16+k*.1;}
-else if(t<.88){travel=1;pen=.1;}
-else {travel=1;pen=.1;opacity=1-(t-.88)/.12;}
-const p=from.clone().lerp(hit,travel).add(dir.clone().multiplyScalar(pen));
-if(t>=.30&&t<.42){const j=(1-(t-.30)/.12)*.03;p.x+=Math.sin(el*140)*j;p.y+=Math.cos(el*165)*j;}
-spear.position.copy(p);spear.lookAt(p.clone().add(dir.clone().multiplyScalar(-10)));
-spear.visible=t<.995;[steel,dark].forEach(m=>m.opacity=opacity);
-trailMat.opacity=t<.30?Math.min(.5,easeIn(t/.30)*.7):0;
-const recoil=t>=.30&&t<.62?Math.sin(((t-.30)/.32)*Math.PI)*Math.exp(-(t-.30)*9)*.14:0;
-target.position.copy(dir.clone().multiplyScalar(recoil));
-const squash=1+recoil*.35;core.scale.set(1-recoil*.15,squash,1-recoil*.15);
-haloMat.opacity=.03+(t>=.30?Math.max(0,.16-(t-.30)*.7):0);
-rings.forEach((r,i)=>{const start=.30+i*.045;const k=(t-start)/.5;
-if(k>0&&k<1){r.scale.setScalar(.35+k*2.1);r.material.opacity=(1-k)*.45;}else r.material.opacity=0;});
-const fk=(t-.30)/.09;flashMat.opacity=fk>0&&fk<1?(1-fk)*.55:0;flash.scale.setScalar(.5+Math.max(0,fk)*1.3);
-const drift=.5+(C.cameraDrift&&!reduced?Math.sin(el*.075)*.2:0);const R=6.4;
-camera.position.set(Math.sin(drift)*R,1.15+(reduced?0:Math.sin(el*.18)*.35),Math.cos(drift)*R);
-camera.lookAt(pivot.position.x*.55,pivot.position.y*.5,0);
-if(!reduced)shell.rotation.y=el*.05;
-renderer.render(scene,camera);}
-frame();}
+const cfg = () => Object.assign({ accentColor: "#e8ecf2", loopSeconds: 7.5, targetRings: true, cameraDrift: true, mouseParallax: true }, window.SF_CONFIG || {});
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+host.appendChild(renderer.domElement);
+renderer.domElement.style.cssText = 'display:block;width:100%;height:100%;';
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+const pivot = new THREE.Group(); scene.add(pivot);
+const dir = new THREE.Vector3(-0.86, -0.22, 0.46).normalize();
+const from = dir.clone().multiplyScalar(-8.5);
+
+/* target: stepped 3D ring dial facing the spear */
+const targetTilt = new THREE.Group(); pivot.add(targetTilt);
+const target = new THREE.Group(); targetTilt.add(target); target.lookAt(from);
+const plate = new THREE.Mesh(new THREE.CylinderGeometry(1.03, 1.03, 0.16, 96),
+  new THREE.MeshStandardMaterial({ color: 0x090a0d, roughness: 0.7, metalness: 0.2 }));
+plate.rotation.x = Math.PI / 2; plate.position.z = -0.08; target.add(plate);
+const ringGroup = new THREE.Group(); target.add(ringGroup);
+const ringMats = [];
+for (let i = 0; i < 5; i++) {
+  const r = 1.0 - i * 0.2, h = 0.05 + i * 0.055;
+  const band = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 96),
+    new THREE.MeshStandardMaterial({ color: i % 2 === 0 ? 0x14171d : 0x0b0c0f, roughness: i % 2 === 0 ? 0.5 : 0.66, metalness: 0.35 }));
+  band.rotation.x = Math.PI / 2; band.position.z = h / 2 - 0.02; ringGroup.add(band);
+  const m = new THREE.MeshBasicMaterial({ color: 0xe8ecf2, transparent: true, opacity: i === 0 ? 0.26 : 0.17, depthWrite: false, side: THREE.DoubleSide });
+  m.userData.base = m.opacity; ringMats.push(m);
+  const line = new THREE.Mesh(new THREE.RingGeometry(r - 0.012, r - 0.003, 128), m);
+  line.position.z = h - 0.018; ringGroup.add(line);
+}
+const rimRing = new THREE.Mesh(new THREE.TorusGeometry(1.03, 0.016, 14, 120),
+  new THREE.MeshStandardMaterial({ color: 0x8d949f, roughness: 0.35, metalness: 0.9 }));
+rimRing.position.z = 0.02; target.add(rimRing);
+const tickMat = new THREE.MeshStandardMaterial({ color: 0x9aa3b0, roughness: 0.4, metalness: 0.7 });
+for (let i = 0; i < 4; i++) {
+  const tick = new THREE.Mesh(new THREE.BoxGeometry(0.012, 0.14, 0.026), tickMat);
+  tick.position.set(Math.cos(i * Math.PI / 2) * 1.12, Math.sin(i * Math.PI / 2) * 1.12, 0.02);
+  tick.rotation.z = i * Math.PI / 2 + Math.PI / 2; target.add(tick);
+}
+const haloMat = new THREE.MeshBasicMaterial({ color: 0x7fa7ff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
+const halo = new THREE.Mesh(new THREE.RingGeometry(1.04, 1.14, 96), haloMat);
+halo.position.z = 0.03; target.add(halo);
+
+/* spear (restrained) */
+const steel = new THREE.MeshStandardMaterial({ color: 0xbf9a52, roughness: 0.38, metalness: 0.85, transparent: true, opacity: 0.8 });
+const dark = new THREE.MeshStandardMaterial({ color: 0x6f5a33, roughness: 0.55, metalness: 0.7, transparent: true, opacity: 0.8 });
+const spear = new THREE.Group(); pivot.add(spear);
+const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.021, 0.025, 2.7, 24), dark);
+shaft.rotation.x = Math.PI / 2; shaft.position.z = 1.6; spear.add(shaft);
+const tip = new THREE.Mesh(new THREE.ConeGeometry(0.085, 0.30, 24), steel);
+tip.rotation.x = -Math.PI / 2; tip.scale.set(0.32, 1, 1); tip.position.z = 0.16; spear.add(tip);
+const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.046, 0.1, 24), steel);
+collar.rotation.x = Math.PI / 2; collar.position.z = 0.36; spear.add(collar);
+for (const z of [0.9, 2.3]) {
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(0.024, 0.006, 10, 24), steel);
+  ring.position.z = z; spear.add(ring);
+}
+
+/* impact: subtle settle */
+const impact = new THREE.Group(); pivot.add(impact);
+const glowMat = new THREE.MeshBasicMaterial({ color: 0x7fa7ff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
+const glow = new THREE.Mesh(new THREE.CircleGeometry(0.13, 48), glowMat); impact.add(glow);
+const rippleMats = [];
+const ripples = [0, 1].map(i => {
+  const m = new THREE.MeshBasicMaterial({ color: 0x7fa7ff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
+  rippleMats.push(m);
+  const mesh = new THREE.Mesh(new THREE.RingGeometry(0.26, 0.275, 96), m);
+  mesh.position.z = 0.01 + i * 0.004; impact.add(mesh); return mesh;
+});
+
+/* lighting */
+scene.add(new THREE.AmbientLight(0xffffff, 0.16));
+const key = new THREE.DirectionalLight(0xffffff, 1.5); key.position.set(4, 5, 3); scene.add(key);
+const rim = new THREE.DirectionalLight(0x7fa7ff, 1.8); rim.position.set(-4, 1.5, -3); scene.add(rim);
+const fill = new THREE.PointLight(0xffffff, 5, 12); fill.position.set(2, -2, 4); scene.add(fill);
+
+/* config */
+let C = cfg();
+function applyConfig() {
+  C = cfg(); const a = new THREE.Color(C.accentColor);
+  rim.color.copy(a); haloMat.color.copy(a); glowMat.color.copy(a);
+  rippleMats.forEach(m => m.color.copy(a)); ringGroup.visible = !!C.targetRings;
+}
+addEventListener('sf-config', applyConfig); applyConfig();
+
+/* layout: target sits right of the headline on desktop */
+function resize() {
+  const w = host.clientWidth || innerWidth, h = host.clientHeight || innerHeight;
+  renderer.setSize(w, h, false); camera.aspect = w / h;
+  const narrow = w < 900; camera.fov = narrow ? 46 : 38;
+  pivot.position.set(narrow ? 0.15 : 2.95, narrow ? -0.5 : 0.1, 0);
+  pivot.scale.setScalar(narrow ? 0.72 : 0.86);
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize); new ResizeObserver(resize).observe(host); resize();
+
+/* pointer */
+const ptr = { x: 0, y: 0 }, sm = { x: 0, y: 0 };
+addEventListener('pointermove', e => { ptr.x = (e.clientX / innerWidth) * 2 - 1; ptr.y = (e.clientY / innerHeight) * 2 - 1; }, { passive: true });
+document.addEventListener('pointerleave', () => { ptr.x = 0; ptr.y = 0; });
+
+/* animation */
+const easeIn = t => t * t * t;
+const hit = dir.clone().multiplyScalar(-0.075);
+const clock = new THREE.Clock();
+spear.scale.setScalar(0.85);
+impact.position.copy(dir.clone().multiplyScalar(-0.34)); impact.lookAt(from);
+let vis = true;
+new IntersectionObserver(e => { vis = e[0].isIntersecting; }, { threshold: 0.01 }).observe(host);
+
+function frame() {
+  requestAnimationFrame(frame);
+  if (!vis) return;
+  const el = clock.getElapsedTime();
+  const loop = Math.max(3, C.loopSeconds);
+  const t = reduced ? 0.6 : (el % loop) / loop;   // reduced motion: hold the settled, struck frame
+  let travel = 1, opacity = 0.8, pen = 0;
+  if (t < 0.30) travel = easeIn(t / 0.30);
+  else if (t < 0.40) { const k = (t - 0.30) / 0.10; pen = Math.sin(k * Math.PI) * 0.05 + k * 0.07; }
+  else if (t < 0.88) pen = 0.07;
+  else { pen = 0.07; opacity = 0.8 * (1 - (t - 0.88) / 0.12); }
+  const p = from.clone().lerp(hit, travel).add(dir.clone().multiplyScalar(pen));
+  if (t >= 0.30 && t < 0.38) { const j = (1 - (t - 0.30) / 0.08) * 0.012; p.x += Math.sin(el * 120) * j; p.y += Math.cos(el * 145) * j; }
+  spear.position.copy(p);
+  spear.lookAt(p.clone().add(dir.clone().multiplyScalar(-10)));
+  spear.visible = opacity > 0.01; steel.opacity = opacity; dark.opacity = opacity;
+  const settle = t >= 0.30 && t < 0.70 ? Math.sin(((t - 0.30) / 0.4) * Math.PI) * Math.exp(-(t - 0.30) * 12) * 0.045 : 0;
+  target.position.copy(dir.clone().multiplyScalar(settle));
+  haloMat.opacity = 0.025 + (t >= 0.30 ? Math.max(0, 0.09 - (t - 0.30) * 0.5) : 0);
+  const gk = (t - 0.30) / 0.14;
+  glowMat.opacity = gk > 0 && gk < 1 ? (1 - gk) * 0.22 : 0;
+  glow.scale.setScalar(0.8 + Math.max(0, Math.min(1, gk)) * 0.5);
+  ripples.forEach((r, i) => {
+    const k = (t - (0.315 + i * 0.075)) / 0.42;
+    if (k > 0 && k < 1) { r.scale.setScalar(0.5 + k * 3.0); r.material.opacity = (1 - k) * (1 - k) * 0.2; }
+    else r.material.opacity = 0;
+  });
+  const mp = C.mouseParallax === false || reduced ? 0 : 1;
+  sm.x += ((ptr.x * mp) - sm.x) * 0.045; sm.y += ((ptr.y * mp) - sm.y) * 0.045;
+  ringMats.forEach(m => (m.opacity = m.userData.base * (1 + Math.abs(sm.x) * 0.35)));
+  const drift = 1.22 + (C.cameraDrift && !reduced ? Math.sin(el * 0.075) * 0.16 : 0) + sm.x * 0.18;
+  const R = 6.4;
+  camera.position.set(Math.sin(drift) * R, 1.15 + (reduced ? 0 : Math.sin(el * 0.18) * 0.35) - sm.y * 0.9, Math.cos(drift) * R);
+  camera.lookAt(pivot.position.x * 0.55 + sm.x * 0.25, pivot.position.y * 0.5 - sm.y * 0.2, 0);
+  targetTilt.rotation.y = sm.x * 0.14; targetTilt.rotation.x = -sm.y * 0.1;
+  renderer.render(scene, camera);
+}
+frame();
+}
 </script>
 <script>(function(){var n=document.querySelector('nav'),h=document.querySelector('.heroSec');if(!n||!h)return;
 function sync(){var d=window.scrollY<h.offsetHeight-90;n.classList.toggle('onDark',d)}

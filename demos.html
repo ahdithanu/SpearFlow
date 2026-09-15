@@ -127,6 +127,7 @@ details.q p{max-width:820px;color:var(--muted);line-height:1.7;margin:0 0 26px;f
 .heroSec .hero h1.seoH1{color:#8b94a2}
 
 /* ===== demos ===== */
+body.demoOpen chat-widget{display:none!important}
 .demoModal[hidden],.demoNone[hidden]{display:none!important}
 .demoWrap{padding:10px 0 110px}
 .demoBar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -389,7 +390,7 @@ const SERVICES = { receptionist: "AI Receptionist", followup: "Lead Follow-Up", 
     $("demoModalSummary").textContent = d.summary;
     $("demoModalSteps").innerHTML = stepsHTML(d);
     modal.hidden = false;
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden"; document.body.classList.add("demoOpen");
     $("demoClose").focus();
     if (push !== false) history.replaceState(null, "", "#" + d.id);
   }
@@ -397,7 +398,7 @@ const SERVICES = { receptionist: "AI Receptionist", followup: "Lead Follow-Up", 
     if (modal.hidden) return;
     modal.hidden = true;
     $("demoPlayer").innerHTML = "";          // stops playback
-    document.body.style.overflow = "";
+    document.body.style.overflow = ""; document.body.classList.remove("demoOpen");
     history.replaceState(null, "", location.pathname + location.search);
     if (lastFocus) lastFocus.focus();
   }

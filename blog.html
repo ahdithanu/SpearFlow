@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>AI Automation Solutions by Industry | Spear Flow</title>
-<meta name="description" content="Explore AI automation for service businesses and industry teams. Find relevant workflows for lead intake, booking, follow up and customer operations." />
+<title>AI Automation Notes and Field Reports | Spear Flow</title>
+<meta name="description" content="Notes from Spear Flow deployments: what happens between a lead and a booking, why response time decides the deal, and where revenue operations actually break." />
 <!-- seo -->
-<link rel="canonical" href="https://spearflow.ai/industries" />
+<link rel="canonical" href="https://spearflow.ai/blog" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Spear Flow" />
-<meta property="og:title" content="AI Automation Solutions by Industry | Spear Flow" />
-<meta property="og:description" content="Explore AI automation for service businesses and industry teams. Find relevant workflows for lead intake, booking, follow up and customer operations." />
-<meta property="og:url" content="https://spearflow.ai/industries" />
+<meta property="og:title" content="AI Automation Notes and Field Reports | Spear Flow" />
+<meta property="og:description" content="Notes from Spear Flow deployments: what happens between a lead and a booking, why response time decides the deal, and where revenue operations actually break." />
+<meta property="og:url" content="https://spearflow.ai/blog" />
 <meta property="og:image" content="https://spearflow.ai/assets/spearflow-logo.png" />
 <meta name="twitter:card" content="summary" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://spearflow.ai/#organization","name":"Spear Flow","legalName":"SpearFlow AI","alternateName":["SpearFlow AI","SpearFlow"],"url":"https://spearflow.ai","logo":"https://spearflow.ai/assets/spearflow-logo.png","description":"Spear Flow builds and deploys AI receptionist, follow-up, and CRM automation systems for service businesses.","foundingDate":"2025"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","@id":"https://spearflow.ai/blog#blog","name":"Spear Flow — Notes on running revenue like a system","publisher":{"@id":"https://spearflow.ai/#organization"},"blogPost":[{"@type":"BlogPosting","headline":"What actually happens between a lead and a booking","description":"Context, decision, action, revenue: a walk through the four steps that turn a raw signal into a booked appointment, and where most operations quietly lose the thread.","datePublished":"2026-09-09","url":"https://spearflow.ai/blog#lead-to-booking","author":{"@id":"https://spearflow.ai/#organization"},"publisher":{"@id":"https://spearflow.ai/#organization"}},{"@type":"BlogPosting","headline":"Inside a real estate rollout: 42% higher qualified lead conversion in 90 days","description":"A breakdown of one deployment's first ninety days: what got automated first, what stayed with the team on purpose, and where the conversion gains actually came from.","datePublished":"2026-08-11","url":"https://spearflow.ai/blog#real-estate-rollout","author":{"@id":"https://spearflow.ai/#organization"},"publisher":{"@id":"https://spearflow.ai/#organization"}},{"@type":"BlogPosting","headline":"Why the first 60 seconds decide the deal","description":"Most businesses lose leads before a human ever sees them. A look at what happens in the window between a form submission and a follow up call, and why that window is where the real automation opportunity sits.","datePublished":"2026-07-14","url":"https://spearflow.ai/blog#first-60-seconds","author":{"@id":"https://spearflow.ai/#organization"},"publisher":{"@id":"https://spearflow.ai/#organization"}}]}</script>
 <!-- /seo -->
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
@@ -27,7 +28,7 @@
 :root{--paper:#f3f1eb;--paper2:#ebe8e0;--ink:#11110f;--muted:#66645d;--line:#cbc8bf;--dark:#11110f;--dark2:#191916;--light:#f4f1e9;--max:1320px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 64px));margin:auto}.mono{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.13em;font-size:10px}.rule{border-top:1px solid var(--line)}
 nav{position:fixed;z-index:80;left:0;right:0;top:0;background:rgba(243,241,235,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(17,17,15,.1)}.navin{width:min(var(--max),calc(100% - 64px));margin:auto;height:68px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:600;font-size:15px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}.brandlogo{height:34px;width:auto;display:block;border-radius:6px}.brandmark{width:22px;height:22px;position:relative}.brandmark:before,.brandmark:after{content:'';position:absolute;background:var(--ink)}.brandmark:before{width:2px;height:22px;left:10px}.brandmark:after{width:22px;height:2px;top:10px}.links{display:flex;gap:30px;font-size:12px;color:#56544e}.links a:hover{color:#111}.navcta{font-size:12px;border-bottom:1px solid var(--ink);padding-bottom:3px}
-.hero{min-height:100svh;padding:130px 0 84px;display:grid;grid-template-columns:1.12fr .88fr;gap:54px;align-items:center}.heroCopy{max-width:900px}.eyebrow{margin-bottom:28px;color:#55534d}.hero h1{font-size:clamp(64px,8.2vw,124px);line-height:.88;letter-spacing:-.075em;font-weight:500;margin:0;max-width:980px}.hero .hook{font-size:clamp(64px,8.2vw,124px);line-height:.88;letter-spacing:-.075em;font-weight:500;margin:0;max-width:980px}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:720px;margin:32px 0 30px}.heroActions{display:flex;gap:20px;align-items:center}.primary{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:14px 18px;font-size:12px}.textLink{font-size:12px;border-bottom:1px solid #8f8c83;padding-bottom:3px}.heroAside{display:flex;flex-direction:column;justify-content:end;min-height:650px}.heroAside .note{border-top:1px solid var(--line);padding-top:16px;color:#737068;line-height:1.6;font-size:12px;max-width:340px;align-self:flex-end}.heroAside strong{display:block;color:var(--ink);font-size:12px;font-weight:500;margin-bottom:8px}
+.hero{min-height:100svh;padding:130px 0 84px;display:grid;grid-template-columns:1.12fr .88fr;gap:54px;align-items:center}.heroCopy{max-width:900px}.eyebrow{margin-bottom:28px;color:#55534d}.hero h1{font-size:clamp(64px,8.2vw,124px);line-height:.88;letter-spacing:-.075em;font-weight:500;margin:0;max-width:980px}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:720px;margin:32px 0 30px}.heroActions{display:flex;gap:20px;align-items:center}.primary{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:14px 18px;font-size:12px}.textLink{font-size:12px;border-bottom:1px solid #8f8c83;padding-bottom:3px}.heroAside{display:flex;flex-direction:column;justify-content:end;min-height:650px}.heroAside .note{border-top:1px solid var(--line);padding-top:16px;color:#737068;line-height:1.6;font-size:12px;max-width:340px;align-self:flex-end}.heroAside strong{display:block;color:var(--ink);font-size:12px;font-weight:500;margin-bottom:8px}
 .heroCore{height:520px;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.heroCore canvas,.architectureCore canvas,.finalCore canvas{position:absolute;inset:0;width:100%!important;height:100%!important}.coreMeta{position:absolute;z-index:3;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;color:#6b6962;pointer-events:none}.coreBadge{position:absolute;z-index:3;right:18px;top:18px;border:1px solid rgba(17,17,15,.2);padding:8px 10px;color:#5e5b54;background:rgba(243,241,235,.55);backdrop-filter:blur(10px)}
 .statement{padding:84px 0 110px}.statement p{font-size:clamp(34px,4.2vw,64px);line-height:1.03;letter-spacing:-.052em;max-width:1180px;margin:0;font-weight:500}.statement p span{color:#8a877f}
 .section{padding:116px 0}.sectionGrid{display:grid;grid-template-columns:.42fr 1fr;gap:80px}.kicker{color:#64615b}.section h2{font-size:clamp(48px,5.8vw,86px);line-height:.94;letter-spacing:-.065em;font-weight:500;margin:0 0 32px;max-width:900px}.lead{font-size:16px;line-height:1.75;color:var(--muted);max-width:760px;margin:0}.capabilities{margin-top:64px;border-top:1px solid var(--line)}.capability{display:grid;grid-template-columns:.26fr .74fr;padding:38px 0;border-bottom:1px solid var(--line);gap:40px}.capability .num{color:#77746d}.capability h3{font-size:29px;letter-spacing:-.045em;font-weight:500;margin:0 0 13px}.capability p{margin:0;color:var(--muted);line-height:1.7;max-width:700px}.capability .mini{margin-top:20px;color:#7a776f}
@@ -38,7 +39,7 @@ nav{position:fixed;z-index:80;left:0;right:0;top:0;background:rgba(243,241,235,.
 .final{padding:122px 0 132px;border-top:1px solid var(--line)}.finalGrid{display:grid;grid-template-columns:1.06fr .94fr;gap:58px;align-items:center}.final h2{font-size:clamp(60px,7.6vw,112px);line-height:.9;letter-spacing:-.074em;font-weight:500;margin:18px 0 0;max-width:900px}.finalCopy p{max-width:600px;color:var(--muted);line-height:1.7;margin:32px 0}.finalCore{height:430px;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.finalCoreMeta{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;color:#77746d;z-index:3}
 .footer{padding:28px 0 38px;border-top:1px solid var(--line);font-size:11px;color:#77746c}.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.footlinks{display:flex;gap:22px;flex-wrap:wrap}.footlinks a:hover{color:var(--ink)}.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.on{opacity:1;transform:none}
 @media(max-width:920px){.hero{grid-template-columns:1fr;gap:28px}.heroAside{min-height:0}.heroAside .note{align-self:flex-start}.heroCore{height:480px}.sectionGrid,.finalGrid{grid-template-columns:1fr;gap:30px}.systemFlow{grid-template-columns:1fr 1fr}.flowItem{border-left:0;border-top:1px solid rgba(255,255,255,.16);padding:24px 20px}.flowItem small{margin-bottom:28px}.results{grid-template-columns:1fr}.metric+.metric{border-left:0;border-top:1px solid var(--line);padding-left:0}.capability{grid-template-columns:1fr;gap:12px}.links{display:none}.architectureCore{height:360px}.finalCore{height:360px}}
-@media(max-width:620px){.wrap,.navin{width:calc(100% - 28px)}.navin{height:62px}.hero{padding-top:112px}.hero h1{font-size:58px}.hero .hook{font-size:58px}.hero p{font-size:15px}.heroActions{align-items:flex-start;flex-direction:column}.heroCore{height:400px}.statement{padding:70px 0 84px}.statement p{font-size:38px}.section,.faq{padding:86px 0}.section h2{font-size:48px}.systemPanel{margin-left:-14px;margin-right:-14px;padding:24px 16px}.architectureCore{height:320px}.systemFlow{grid-template-columns:1fr}.flowItem{padding-left:0}.control{padding:86px 0}.controlRow{grid-template-columns:1fr;gap:8px}.final{padding:90px 0 100px}.final h2{font-size:58px}.finalCore{height:320px}.foot{flex-direction:column}.navcta{display:none}.coreMeta,.finalCoreMeta{font-size:8px}.coreBadge{display:none}}
+@media(max-width:620px){.wrap,.navin{width:calc(100% - 28px)}.navin{height:62px}.hero{padding-top:112px}.hero h1{font-size:58px}.hero p{font-size:15px}.heroActions{align-items:flex-start;flex-direction:column}.heroCore{height:400px}.statement{padding:70px 0 84px}.statement p{font-size:38px}.section,.faq{padding:86px 0}.section h2{font-size:48px}.systemPanel{margin-left:-14px;margin-right:-14px;padding:24px 16px}.architectureCore{height:320px}.systemFlow{grid-template-columns:1fr}.flowItem{padding-left:0}.control{padding:86px 0}.controlRow{grid-template-columns:1fr;gap:8px}.final{padding:90px 0 100px}.final h2{font-size:58px}.finalCore{height:320px}.foot{flex-direction:column}.navcta{display:none}.coreMeta,.finalCoreMeta{font-size:8px}.coreBadge{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
 
 .navdd{position:relative;display:inline-flex;align-items:center}
@@ -69,10 +70,16 @@ nav{position:fixed;z-index:80;left:0;right:0;top:0;background:rgba(243,241,235,.
 </style>
 
 <style>
-.pageHero{padding:150px 0 26px}
-.pageHero h1{font-size:clamp(52px,6.6vw,104px);line-height:.92;letter-spacing:-.07em;font-weight:500;margin:0;max-width:1040px}.pageHero .hook{font-size:clamp(52px,6.6vw,104px);line-height:.92;letter-spacing:-.07em;font-weight:500;margin:0;max-width:1040px}
-.pageHero h1 span{color:#8a877f}.pageHero .hook span{color:#8a877f}
+.pageHero{padding:150px 0 96px}
+.pageHero h1{font-size:clamp(52px,6.6vw,104px);line-height:.92;letter-spacing:-.07em;font-weight:500;margin:0;max-width:1040px}
+.pageHero h1 span{color:#8a877f}
 .pageHero .lead{margin-top:30px}
+.pageHero .lead{font-size:19px;line-height:1.6;color:var(--ink);max-width:860px}
+.aboutIntro{font-size:16px;line-height:1.7;color:#3d3b37;max-width:860px;margin:22px 0 0}
+.aboutBody{margin-top:30px;max-width:860px;column-count:2;column-gap:54px}
+.aboutBody p{font-size:15px;line-height:1.72;color:#4d4b46;margin:0 0 16px;break-inside:avoid}
+.aboutBody p:last-child{margin-bottom:0}
+@media(max-width:860px){.aboutBody{column-count:1}.pageHero .lead{font-size:17px}.aboutIntro{font-size:15px}}
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:60px;border-top:1px solid var(--line)}
 .cell{padding:34px 30px 38px 0;border-bottom:1px solid var(--line)}
 .cell:nth-child(even){padding-left:30px;border-left:1px solid var(--line)}
@@ -89,12 +96,12 @@ nav{position:fixed;z-index:80;left:0;right:0;top:0;background:rgba(243,241,235,.
 .sectorCard p{margin:0 0 16px;color:var(--muted);line-height:1.65;font-size:13px}
 .sectorCard .go{font-size:12px;color:#77746d}
 .sectorCard:hover h3{color:#000}.sectorCard:hover .go{color:var(--ink)}
-.people{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line)}
-.person{padding:32px 26px 38px 0;border-bottom:1px solid var(--line)}
-.person+.person{padding-left:26px;border-left:1px solid var(--line)}
-.person h3{font-size:26px;letter-spacing:-.04em;font-weight:500;margin:0 0 6px}
-.person .role{color:#77746d;margin-bottom:18px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
+
+
+.person+
+
+.person 
+
 .chip{border:1px solid var(--line);padding:5px 10px;font-size:11px;color:#66645d}
 details.q{border-bottom:1px solid var(--line)}
 details.q summary{list-style:none;cursor:pointer;padding:24px 0;display:grid;grid-template-columns:1fr auto;gap:20px;font-size:19px;letter-spacing:-.03em}
@@ -122,6 +129,34 @@ details.q p{max-width:820px;color:var(--muted);line-height:1.7;margin:0 0 26px;f
 @media(max-width:920px){.pageHero{padding:120px 0 18px}.grid2,.people,.planGrid,.quoteGrid,.sectorRow{grid-template-columns:1fr}
 .cell,.person,.plan,.quote,.sectorCard{padding:26px 0 30px!important;border-left:0!important}}
 
+/* ===== blog ===== */
+.blogWrap{padding:6px 0 30px}
+.blist{list-style:none;margin:34px 0 0;padding:0;border-top:1px solid var(--line)}
+.bpost{border-bottom:1px solid var(--line)}
+.bdet{padding:34px 0}
+.bdet{border-bottom:0}
+.bsum{display:grid;grid-template-columns:150px 1fr;gap:32px;cursor:pointer;list-style:none;padding:0;font-size:15px;letter-spacing:normal}
+.bsum:after,.bdet[open] .bsum:after{content:none;display:none}
+.bsum::-webkit-details-marker{display:none}
+.bmeta{display:flex;flex-direction:column;gap:7px;padding-top:5px;color:#8a877f}
+.bcat{color:var(--ink)}
+.bttl{font-size:23px;line-height:1.24;letter-spacing:-.035em;font-weight:500;margin:0 0 11px;max-width:26ch}
+.bexc{margin:0 0 16px;font-size:15px;line-height:1.65;color:var(--muted);max-width:62ch}
+.bmore{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--ink);border-bottom:1px solid #8f8c83;padding-bottom:3px}
+.bchev{display:inline-block;transition:transform .2s ease}
+.bdet[open] .bchev{transform:rotate(90deg)}
+.bsum:hover .bttl{text-decoration:underline;text-underline-offset:4px}
+.bart{max-width:64ch;margin:26px 0 6px 182px;padding-top:26px;border-top:1px solid var(--line);font-size:15.5px;line-height:1.75;color:#3d3b37}
+.bby{color:#8a877f;margin:0 0 22px}
+.bart p{margin:0 0 20px;max-width:none;font-size:15.5px;line-height:1.75;color:#3d3b37}
+.bart .bby{font-size:11px;color:#8a877f}
+.bart h4{font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--ink);margin:30px 0 11px}
+.bart ul{margin:0 0 20px;padding-left:18px}
+.bart li{margin-bottom:9px}
+.bart strong{font-weight:600;color:var(--ink)}
+@media(max-width:920px){.bsum{grid-template-columns:1fr;gap:10px}.bmeta{flex-direction:row;gap:14px;padding-top:0}.bart{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.bchev{transition:none}}
+.pageHero .hook{font-size:clamp(52px,6.6vw,104px);line-height:.92;letter-spacing:-.07em;font-weight:500;margin:0;max-width:1040px}.pageHero .hook span{color:#8a877f}
 .seoH1,.pageHero h1.seoH1,.hero h1.seoH1,.heroSec .hero h1.seoH1{font-family:'DM Mono',monospace;text-transform:uppercase;font-size:12px;line-height:1.6;letter-spacing:.13em;font-weight:500;margin:0 0 26px;max-width:760px}
 .heroSec .hero h1.seoH1{color:#8b94a2}
 </style>
@@ -131,14 +166,71 @@ details.q p{max-width:820px;color:var(--muted);line-height:1.7;margin:0 0 26px;f
 <nav><div class="navin"><a class="brand" href="/"><img class="brandlogo" src="/assets/spearflow-logo.png" alt="Spear Flow" /></a><div class="links"><a href="/#product">Product</a><span class="navdd"><a href="/industries">Industries</a><div class="ddmenu"><a href="/real-estate">Real Estate</a><a href="/chiropractic">Chiropractic</a><a href="/medical">Medical Practices</a><a href="/medspas">MedSpas</a><a href="/hvac">HVAC</a><a href="/remodelers">Remodelers</a><a href="/commercial">Commercial</a><a href="/general-contractors">General Contractors</a><a href="/restoration">Restoration</a><a href="/agriculture">Agriculture</a><a href="/legal">Legal</a><a href="/restaurants">Restaurants</a><a class="ddalt" href="/industries#not-listed">Don't see your sector? &rarr;</a></div></span><a href="/case-studies">Case Studies</a><a href="/blog">Blog</a><a href="/engagement">Work With Us</a><a href="/about">About</a></div><a class="navcta" href="/book">Get started</a><button class="burger" id="burger" aria-label="Menu" aria-expanded="false" onclick="toggleM()"><span></span><span></span><span></span></button></div><div class="mmenu" id="mmenu"><div class="mmw"><a href="/#product">Product</a><a class="mhead" href="/industries">Industries</a><div class="msub"><a href="/real-estate">Real Estate</a><a href="/chiropractic">Chiropractic</a><a href="/medical">Medical Practices</a><a href="/medspas">MedSpas</a><a href="/hvac">HVAC</a><a href="/remodelers">Remodelers</a><a href="/commercial">Commercial</a><a href="/general-contractors">General Contractors</a><a href="/restoration">Restoration</a><a href="/agriculture">Agriculture</a><a href="/legal">Legal</a><a href="/restaurants">Restaurants</a><a href="/industries#not-listed">Don't see your sector?</a></div><a href="/case-studies">Case Studies</a><a href="/blog">Blog</a><a href="/engagement">Work With Us</a><a href="/about">About</a><a class="mcta" href="/book">Get started &rarr;</a></div></div></nav>
 <main>
 <section class="pageHero"><div class="wrap">
-<h1 class="eyebrow mono seoH1 reveal on">AI Automation for Service Businesses and Industry Teams</h1>
-<h2 class="reveal on hook">We go <span>deep</span> in<br>twelve sectors.</h2>
-<p class="lead reveal on">Spear Flow builds and deploys AI receptionist, follow-up, and CRM automation systems for service businesses, and we go deep in twelve sectors. Not because we can't work elsewhere, but because depth is where we create value: operators who understand your business before they recommend a system are harder to find.</p></div></section>
-<section class="section" style="padding-top:40px"><div class="wrap"><div class="sectorGroup"><div class="ghead mono reveal"><span>Property & Construction</span><span>03 sectors</span></div><div class="sectorRow"><a class="sectorCard reveal" href="/real-estate"><span class="mono">Real Estate</span><h3>Brokerages and Real Estate Teams</h3><p>Every lead captured. Every follow-up sent. Agents focused on closing, not coordinating. AI receptionist, CRM automation, and AI search presence built for high-volume operations.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/general-contractors"><span class="mono">GCs &amp; Home Builders</span><h3>General Contractors and Custom Builders</h3><p>Inquiries qualified before they hit your calendar, proposals that don't go cold, and long build cycles held together with automated touchpoints.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/commercial"><span class="mono">Commercial Subs</span><h3>Commercial and Trade Subcontractors</h3><p>Bid invitations captured the moment they land, follow-up that runs through the award decision, and GC relationships kept warm on the permit clock.</p><span class="go mono">View sector &rarr;</span></a></div></div><div class="sectorGroup"><div class="ghead mono reveal"><span>Trades & Emergency Response</span><span>03 sectors</span></div><div class="sectorRow"><a class="sectorCard reveal" href="/hvac"><span class="mono">HVAC</span><h3>Residential and Commercial Contractors</h3><p>Every emergency call answered at any hour, every estimate followed up until it closes, and past customers reactivated. Peak-season surges absorbed.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/restoration"><span class="mono">Restoration</span><h3>Water &amp; Fire Damage Restoration</h3><p>Every emergency call answered at 2 a.m., the loss triaged and the nearest tech dispatched, and claim-ready documentation built as the job happens.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/remodelers"><span class="mono">Remodelers &amp; Trades</span><h3>Remodelers and Specialty Trade Contractors</h3><p>Every call answered live while you're on the job, every estimate followed up until it signs, and tire-kickers filtered before they hit your calendar.</p><span class="go mono">View sector &rarr;</span></a></div></div><div class="sectorGroup"><div class="ghead mono reveal"><span>Health & Wellness</span><span>03 sectors</span></div><div class="sectorRow"><a class="sectorCard reveal" href="/chiropractic"><span class="mono">Chiropractic</span><h3>Practices and Multi-Location Clinics</h3><p>Chairs full. Patients returning. No-shows recovered automatically. The full appointment lifecycle running on systems instead of one person's memory.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/medical"><span class="mono">Medical Practices</span><h3>Independent and Group Practices</h3><p>Clinical teams focused on patients, not administration. An administrative AI receptionist with staff escalation, preventive care outreach, and digital infrastructure that competes on convenience.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/medspas"><span class="mono">MedSpas</span><h3>Injectables, Laser, and Aesthetics</h3><p>Chair time booked, packages completed, memberships saved before they quietly lapse. Consult capture and billing recovery running on a system.</p><span class="go mono">View sector &rarr;</span></a></div></div><div class="sectorGroup"><div class="ghead mono reveal"><span>Professional & Specialty</span><span>03 sectors</span></div><div class="sectorRow"><a class="sectorCard reveal" href="/legal"><span class="mono">Legal</span><h3>Solo Practitioners and Small Firms</h3><p>Every intake captured, every consultation scheduled, attorneys billing instead of coordinating. The administrative layer automated so legal work stays front and center.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/restaurants"><span class="mono">Restaurants</span><h3>Restaurant Groups and Catering</h3><p>No-shows reduced and recovered. Catering leads captured at speed. Guest relationships built beyond the visit, on systems instead of whoever answers the phone.</p><span class="go mono">View sector &rarr;</span></a><a class="sectorCard reveal" href="/agriculture"><span class="mono">Agriculture</span><h3>Dealers, Suppliers, and Agri-Service</h3><p>Complex seasonal operations made visible and responsive. Inbound capture during peak season and relationship CRM that survives staff turnover.</p><span class="go mono">View sector &rarr;</span></a></div></div></div></section>
-<section class="section rule"><div class="wrap sectionGrid"><div class="kicker mono reveal">The common thread</div>
-<div><div class="reveal"><h2>Every sector. The same underlying problem.</h2></div><div class="grid2"><div class="cell reveal"><span class="mono">Inbound</span><h3>Leads lost to missed calls</h3><p>Every business we work with is losing revenue to inbound they can't answer fast enough. AI receptionist closes that gap at every hour.</p></div><div class="cell reveal"><span class="mono">Follow-Up</span><h3>Manual processes that don't scale</h3><p>Confirmations, reminders, re-engagement, re-booking &mdash; all running manually by people who have higher-value work to do. Automation handles the repetitive layer.</p></div><div class="cell reveal"><span class="mono">Visibility</span><h3>No real-time operational picture</h3><p>Decisions made on gut because the data lives in disconnected systems or people's heads. A unified dashboard changes what decisions are even possible.</p></div></div></div></div></section>
+<h1 class="eyebrow mono seoH1 reveal on">Notes on AI Automation for Service Businesses</h1>
+<h2 class="reveal on hook">Notes on running revenue <span>like a system.</span></h2>
+<p class="lead reveal on">What we're seeing across deployments: response time, follow up, qualification, and where the leaks actually are.</p>
+</div></section>
+
+<section class="blogWrap"><div class="wrap">
+<ul class="blist reveal">
+<li class="bpost"><details class="bdet" id="lead-to-booking"><summary class="bsum">
+<div class="bmeta mono"><span>September 9, 2026</span><span class="bcat">Operations</span></div>
+<div><h3 class="bttl">What actually happens between a lead and a booking</h3><p class="bexc">Context, decision, action, revenue: a walk through the four steps that turn a raw signal into a booked appointment, and where most operations quietly lose the thread.</p>
+<span class="bmore">Read the piece <span class="bchev" aria-hidden="true">&rarr;</span></span></div></summary>
+<div class="bart"><p class="bby mono">Published by Spear Flow &middot; September 9, 2026</p>
+<p>Ask most business owners what happens between a lead coming in and a job getting booked, and the honest answer is usually that it depends who picks it up. That inconsistency is invisible day to day, but it shows up directly in the numbers: response time, follow up rates, and ultimately how many leads turn into revenue.</p>
+<p>We build every deployment around the same four step path, because it's the same path every business is already running informally. We just make it consistent and visible.</p>
+<h4>1. Context</h4>
+<p>Before anything gets decided, the system pulls together what's actually known: where the lead came from, what they asked about, their history in the CRM if they have one, and what's happened in any prior conversation. Most missed opportunities trace back to this step being skipped. Someone responds without knowing the lead already talked to the business last month.</p>
+<h4>2. Decision</h4>
+<p>With context in hand, the system applies the qualification and routing logic the business already uses, the same rules an experienced staff member would apply, just applied every time instead of only when someone remembers to. This is where a business's actual judgment gets encoded, not replaced.</p>
+<h4>3. Action</h4>
+<p>A call, a text, an email, or a booked slot on the calendar, whichever the decision step calls for. In workflows we've deployed this year, this is the step most directly tied to the metrics that matter: teams running consistent, immediate action on every lead see response times fall under 60 seconds and booking rates roughly double compared to manual, ad hoc follow up.</p>
+<h4>4. Revenue</h4>
+<p>The step most operations never close the loop on. Every action gets tied back to its outcome (booked, no show, closed, lost) so the business can see which sources and sequences actually produce revenue, not just activity. Without this step, teams are flying on instinct about what's working.</p>
+<h4>Where operations usually break</h4>
+<p>Almost never at step three. Businesses are generally fine at taking action once they know what to do. The breaks happen at steps one and two: context that lives in five different tools, and decisions that depend on whoever happens to be available. Fixing those two steps is usually where the majority of the measurable gain comes from, well before anything about the action itself changes.</p>
+<p>Treating this as one connected path, instead of four disconnected tools, is the difference between a business that can tell you exactly why a quarter was strong and one that can only tell you that it was.</p></div></details></li>
+<li class="bpost"><details class="bdet" id="real-estate-rollout"><summary class="bsum">
+<div class="bmeta mono"><span>August 11, 2026</span><span class="bcat">Case Notes</span></div>
+<div><h3 class="bttl">Inside a real estate rollout: 42% higher qualified lead conversion in 90 days</h3><p class="bexc">A breakdown of one deployment's first ninety days: what got automated first, what stayed with the team on purpose, and where the conversion gains actually came from.</p>
+<span class="bmore">Read the piece <span class="bchev" aria-hidden="true">&rarr;</span></span></div></summary>
+<div class="bart"><p class="bby mono">Published by Spear Flow &middot; August 11, 2026</p>
+<p>A midsized real estate team came to us with a familiar shape of problem: a healthy volume of inbound leads from listings, referrals, and ads, and a follow up process that depended entirely on whichever agent happened to be free. Leads that came in evenings or weekends often weren't contacted until the next business day, and there was no consistent way to tell which leads were worth prioritizing.</p>
+<p>Over a 90 day deployment, average response time to new leads dropped to under 60 seconds, qualified lead conversion rose by 42%, and appointment bookings roughly doubled compared to the team's baseline. None of that came from a single big change. It came from fixing the handoffs one at a time.</p>
+<h4>Phase one: stop the leak</h4>
+<p>The first two weeks focused entirely on response time. Every new lead, from the site, from portals, from missed calls, now triggers an immediate, on brand response and a qualifying conversation, before it ever depends on an agent's calendar. This alone closed most of the after hours gap, which had been the largest single source of lost leads.</p>
+<h4>Phase two: qualify before routing</h4>
+<p>Not every lead deserves the same follow up. The system was tuned to ask the questions agents were already asking manually: timeline, financing status, specific listings of interest, and route hot leads straight to an agent's calendar while nurturing earlier stage leads on a longer sequence. This is where most of the conversion lift showed up: agents stopped spending time on unqualified leads and started spending it on the ones ready to move.</p>
+<h4>Phase three: keep humans on the decisions that matter</h4>
+<p>Pricing conversations, negotiation, and anything emotionally sensitive stayed with agents by design. The system handles volume (initial response, qualification, scheduling, reminders) and hands off the moment a conversation needs judgment. That boundary was set with the team up front, not discovered after something went wrong.</p>
+<h4>What changed, in numbers</h4>
+<ul><li><strong>Response time:</strong> from hours (often next business day) to under 60 seconds.</li>
+<li><strong>Qualified lead conversion:</strong> up 42% against the team's prior 90 day average.</li>
+<li><strong>Appointments booked:</strong> roughly 2x, driven mainly by faster follow up and after hours coverage.</li></ul>
+<p>The team didn't add headcount to get here. They kept the same agents and gave the system the parts of the process that were about speed and consistency, not judgment.</p></div></details></li>
+<li class="bpost"><details class="bdet" id="first-60-seconds"><summary class="bsum">
+<div class="bmeta mono"><span>July 14, 2026</span><span class="bcat">Response Time</span></div>
+<div><h3 class="bttl">Why the first 60 seconds decide the deal</h3><p class="bexc">Most businesses lose leads before a human ever sees them. A look at what happens in the window between a form submission and a follow up call, and why that window is where the real automation opportunity sits.</p>
+<span class="bmore">Read the piece <span class="bchev" aria-hidden="true">&rarr;</span></span></div></summary>
+<div class="bart"><p class="bby mono">Published by Spear Flow &middot; July 14, 2026</p>
+<p>Every lead has a half life. The moment someone fills out a form, calls, or messages your business, their intent is at its peak, and it starts decaying immediately. In deployments we've run this year, the gap between a lead arriving and someone responding is consistently the single biggest predictor of whether that lead converts at all.</p>
+<p>The industry benchmark most teams operate against, a callback sometime today, is already too slow. Across the businesses we've instrumented, leads contacted within the first 60 seconds convert at roughly double the rate of leads contacted within the first hour, and the drop off accelerates fast after that. By the five minute mark, a meaningful share of prospects have already called a competitor, and most never tell you why they went cold.</p>
+<p>This isn't a staffing problem you can solve by hiring more people to sit by the phone. It's a structural problem: demand doesn't arrive on a schedule, and humans can't be instantly available around the clock without burning out or costing more than the deal is worth. That's the gap we build into.</p>
+<h4>What "under 60 seconds" actually requires</h4>
+<p>Getting a real response out inside a minute means three things have to already be true before the lead ever comes in:</p>
+<ul><li>The system has to see the lead the instant it lands, from the form, the missed call, the chat widget, or the ad, with no manual step in between.</li>
+<li>It has to already know enough about the business (services, pricing logic, availability) to respond with something useful, not a generic "thanks, we'll be in touch."</li>
+<li>It has to know when to hand off. Routine questions get answered immediately; anything that needs judgment gets routed to a person in real time, not queued for tomorrow.</li></ul>
+<p>Across the workflows we've deployed this year, teams that hit under 60 second response times are seeing qualified lead conversion improve by roughly 40% compared to their prior process, and appointment booking rates move by a similar order of magnitude once follow up is handled with the same speed and consistency as the first response.</p>
+<h4>The part teams underestimate</h4>
+<p>Speed alone isn't the whole story: a fast, wrong answer is still a lost lead. The response has to be accurate to the business's real offers, tone, and availability, or it erodes trust instead of building it. That's why we treat response time as a system design problem, not a chatbot bolted onto a website: the speed only pays off when what's said in that first minute is actually correct.</p>
+<p>If your current process depends on someone checking a shared inbox between other tasks, the fix usually isn't checking it more often. It's removing the gap between lead and response entirely.</p></div></details></li>
+</ul>
+</div></section>
+
 <section class="final"><div class="wrap"><div class="finalCopy reveal">
-<div class="kicker mono">Next step</div><h2>Don't see your sector? Talk to us anyway.</h2><p>If your business has leads, appointments, follow-ups, and customers to retain, the underlying systems apply. We'll tell you honestly whether we're the right fit.</p>
+<div class="kicker mono">Next step</div><h2>Find the leaks in your own operation.</h2><p>We map your intake and follow up, quantify what each gap is costing, and show you what closing it would take. No pitch deck.</p>
 <a class="primary" href="/book">Book a call <span>&rarr;</span></a></div></div></section>
 </main>
 <footer class="footer"><div class="wrap foot"><p class="footdesc">Spear Flow builds and deploys AI receptionist, follow-up, and CRM automation systems for service businesses.</p><span>© 2026 SpearFlow AI</span><span class="footlinks"><a href="/industries">Industries</a><a href="/case-studies">Case Studies</a><a href="/blog">Blog</a><a href="/engagement">Work With Us</a><a href="/about">About</a><a href="/compliance">Compliance</a><a href="/book">Book a Call</a></span></div></footer>
